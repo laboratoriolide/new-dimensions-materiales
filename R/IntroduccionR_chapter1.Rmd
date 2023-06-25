@@ -702,6 +702,9 @@ class: center, center, top
 .weight[Asignación.-] Evalúa la expresión y guarda el resultado en una variable (no lo imprime)
 </div>
 
+<br>
+
+
 ```{r asigna}
 a <- 5
 a <- 2*a # Reasigna el valor a la variable "a"
