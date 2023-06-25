@@ -173,7 +173,7 @@ class: center, center, top
 
 --
 
-<img style="float:center" src="fig/RStudio.PNG" width="500">
+<img style="float:center" src="fig/RStudio.png" width="500">
 
 ---
 background-image: url("fig/Fondo - 2023.PNG")
@@ -295,7 +295,7 @@ class: center, center, top
 
 <div class="left fontone opaco">
 <ul style="list-style-type: disc">
-<img style="float:right" src="fig/rpack.PNG"/>
+<img style="float:right" src="fig/rpack.png"/>
 <li>Contienen datos, funciones y códigos.</li> 
 
 --
@@ -473,7 +473,7 @@ class: center, center, top
 </ul>
 </div>
 
-<img src="fig/projecto.PNG" width="400" height="350"/>
+<img src="fig/projecto.png" width="400" height="350"/>
 
 <div class="left fontone opaco">
 <ul style="list-style-type: none">
@@ -1094,7 +1094,12 @@ class: center, center, top
 
 <img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
 
+<br>
+<br>
+
 .left[.fontone[Si construimos el factor "temp_vec":]]
+
+<br>
 
 ```{r}
 temp_vec <- c("High", "Low", "Medium", "Low", "Low", "Medium", "High", "Low","Medium", "Low", "Low")
@@ -1108,6 +1113,8 @@ temp_fct <- factor(temp_vec,
 ```
 
 .left[.fontone[De manera que luciría]]
+
+<br>
 
 ```{r}
 temp_fct
