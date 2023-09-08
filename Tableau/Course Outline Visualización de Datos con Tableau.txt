@@ -1,0 +1,70 @@
+﻿Logo, company name
+
+Description automatically generated 
+
+Visualización de Datos con Tableau
+Course Outline
+
+
+New Dimensions 2023
+Dia 1
+
+
+1. Que es Tableau?
+2. ¿Qué es la visualización de datos?
+3. Instalando Tableau:
+* Ver instrucciones para descarga gratuita de Tableau Public aquí. Se puede utilizar cualquier correo personal para descargar el programa. Se detectará automáticamente el sistema operativo. Si es que existe algún problema con computadoras de 32 bits,  asegurarse de que se esté instalando la versión 10.4 de Tableau.
+* Crear una cuenta de Tableau Public aquí.
+* Para activar una versión premium Tableau Desktop para estudiantes (correos que tengan .edu en el dominio), entra aquí.  La cuenta es gratuita por 1 año. 
+4. Entendiendo la Base de Datos Superstore
+* Si existe algún problema descargando de Google Drive, descargar Superstore Sales desde aquí.
+5. Conectando con Datos en Tableau
+6. Interfaz Tableau
+7. Tipos de datos, medidas
+8. Visualización básica
+   1. Tipos de gráficos y tipos de gráficos con cada dato
+   2. Interfaz X vs. Y
+   3. Nombres de Ejes
+   4. Títulos de Gráfico (Nombre de hoja y otra cosa)
+   5. Filtros
+9. Publicación en Tableau Public
+Día 2
+
+
+1. Fechas
+   1. Discreto vs. Continuo
+   2. Filtros con fechas
+   3. Time Series
+2. Dashboards
+   1. Manejo de Filtros
+   2. Tarjetas de medidas calculadas
+3. Visualizaciones intermedias
+   1. Mapas
+   2. Bubble Plot
+   3. Dual Axis
+   4. Jerarquías de Fecha
+   5. Pages: Mapas con Video
+   6. Agrupación de variables categóricas (Group)
+   7. Agregación de los datos e Histogramas
+4. Exportando imágenes
+5. Conclusiones
+
+
+Fuentes
+
+
+1. DataCamp (cursos)
+* Introduction to Tableau
+* Creating Dashboards with Tableau
+* Data Visualization with Tableau
+* Understanding Data Visualization
+* Data Communication Concepts
+2. Visualización de datos con Tableau, Bejarano y Diago (2017). https://www.slideshare.net/juanchoballen1/visualizacion-tableau
+
+
+Material adicional
+
+
+1. Acosta Ramírez, Camila (2022). Softwares para la visualización estadística. https://estadisticaun.github.io/Softwares/index.html#portada
+2. DataCamp: Tableau Fundamentals (skill track) y Data Analyst with Tableau (career track)
+3. Videos de capacitación de Tableau gratuitos (oficial Tableau). https://www.tableau.com/es-es/learn/training

@@ -1,0 +1,74 @@
+﻿Logo, company name
+
+Description automatically generated 
+
+Visualización de Datos con Tableau
+Instrucciones Miniproyecto
+
+
+New Dimensions 2023
+
+
+En el proyecto final de R, generaste un tibble llamado empresas, en donde recopilaste información interesante sobre las empresas registradas en el Ecuador.  Ahora utilizarás un base de datos similar, el Directorio de Compañías, que tiene información básica sobre gran parte de las compañías registradas en Ecuador. 
+
+
+Mediante esta base de datos, genera un dashboard en Tableau, con visualizaciones efectivas y estéticamente adecuadas que que respondan las siguientes preguntas: 
+1. ¿Cuántas empresas activas existen en Ecuador hasta la fecha? ¿Cuántas de ellas se crearon pospandemia?
+2. ¿Cuál es el capital suscrito promedio de las empresas activas? ¿Mediana? ¿Quintiles?
+3. ¿ Cuales CIIU tienen mayor cantidad de empresas activas?
+4. ¿ En qué provincias se concentran la mayor cantidad de compañías?
+5. ¿ Cómo ha evolucionado la creación de compañías en el tiempo? ¿En qué año se generaron más y menos compañías?
+6. ¿En qué mes del año se crean más compañías? 
+7. ¿ En promedio, que CIIU y que provincias crean más compañías?
+8. ¿ Cuál es el tipo de empresa (anónima, limitada, SAS) más común hasta la fecha? 
+9. ¿Cómo ha evolucionado en el tiempo el tipo de empresa más común?
+10. ¿Cuántas empresas en estado de disolución existen en este momento? ¿Qué provincias y que CIIU tienen mayor cantidad de empresas en estado de disolución?
+
+
+Responder a estas preguntas requerirá conocimiento sobre la utilización de funcionalidades básicas de Tableau. Utiliza todo el arsenal de funciones que te ofrece Tableau, en especial tooltips, dimensiones, parámetros calculados.  Específicamente, para generar este dashboard y responder las preguntas tendrás que: 
+
+
+* Buscar y descargar la base de datos en la página web de la Superintendencia de Compañías, Valores y Seguros del Ecuador. 
+* Generar gráficos deberán ser completamente legibles y con un estilo visual consistente
+* Generar un dashboard que sea dinámico, incluyendo slicers y explicaciones cuando sea necesario. 
+* Al menos un mapa debería estar presente
+
+
+Puedes usar R u otra herramienta para la limpieza de datos, pero para puntos extra, realiza todo desde Tableau.  Recuerda que puedes importar y trabajar con más de una base de datos con Tableau. Además, existen JOINs y UNIONs en Tableau, investiga cómo usarlos utilizando cualquier herramienta. Probablemente, necesitarás consultar la información que Zulemma adjuntó para su proyecto en algunos casos en donde la base de datos no sea lo suficientemente explicativa. 
+
+
+Además del dashboard, crea un resumen ejecutivo de los resultados, respondiendo a cada pregunta,  y una documentación del producto. El resumen ejecutivo describe el contenido de los gráficos, es decir, las respuestas a cada pregunta que se te planteó, sin embargo, no respondas como si fuera una prueba de colegio. Crea un texto explicativo, respondiendo a las preguntas en prosa seguida. De igual forma, realiza una conclusión dando un diagnóstico y proyección de la economía empresarial ecuatoriana mediante la información que sacaste. Explica si crees que necesitas otra información para dar un mejor diagnóstico; denota que tipo de información. 
+
+
+La documentación debería incluir instrucciones básicas de uso (explícale a un gerente general despistado como utilizar el dashboard), así como una ficha técnica que especifique cómo calculaste las medidas, sea en Tableau o en otra herramienta.  Si utilizas otra herramienta, deberás crear un repositorio de GitHub que contenga todos los documentos de trabajo. La documentación deberá ser consecuente con el repositorio, es decir, todo nombre de archivo debe estar correctamente referenciado. 
+
+
+No existe límite de extensión para el documento, pero para que el trabajo sea manejable, debería ser no más de 6 páginas. Una página es el resumen ejecutivo, otra la guía explicativa para usuarios del dashboard y finalmente cuatro páginas de ficha técnica. El entregable será el documento explicativo que incluya un link a la página web donde está publicado el dashboard (Tableau Public). 
+
+
+Serás evaluada de la siguiente manera: 
+* Respuesta a las preguntas: 50%. Cada pregunta valdrá 5%
+* Estilo estético: 20%.
+* Resumen ejecutivo y documentación: 30%. Se tomará en cuenta que el documento sea completo, claro y con estilo de redacción profesional. 
+
+
+El proyecto es individual (cada persona debe subir y trabajar en su propio proyecto), pero fomentamos el trabajo colaborativo . 
+
+
+La entrega será el día domingo 10 de septiembre. Entregas tardías hasta el 15 de septiembre se aceptarán con penalización de 10% por cada día de retraso. Después del 15 de septiembre, no se aceptarán entregas. Para poder aprobar el minimódulo, se requiere al menos 70% de calificación. 
+
+
+Es posible que te estanques en este proyecto, especialmente si te cuesta entender los conceptos de tidy data. Esto es una habilidad que se adquiere con la experiencia. Para no fracasar, no tengas miedo al estancamiento; si te estancas, continúa con otra pregunta o consulta con el instructor/compañeras. Nadie te podrá solucionar el problema por ti, pero puedes dar tu mejor esfuerzo y explicar en el documento lo que más te costó y como intentaste solucionarlo. Procura realizar preguntas al instructor tan pronto como sea posible, para evitar esta situación. 
+
+
+Algunas pistas
+1. ¿Cómo era de hacer tarjetas en Tableau? Y como se aplicaba filtros? Un CALCULATE, pero en Tableau?
+2. ¿median(x, na.rm == F)? ¿y en código de Tableau?
+3. Los treeplot son buenos gráficos para salir del aburrido gráfico de barras. Recuerda que nadie se memorza los CIIU. Que significa A, B, C? Utiliza tu criterio para ver si es que conviene que nivel de CIIU usar.
+4. https://www.youtube.com/watch?v=g57mSGjZ5aU
+5. En R sería un group_by. Recuerda utilizar un eje x de fecha que sea fácilmente legible. Quizás se necesita aplicar un paquete llamado lubridate.
+6. Se utilizará a data continua, o fecha discreta?
+7. Facilito después de un group_by.
+8. Veáse 7. Se vale tener solo un (1) mapa pero con tooltips. 
+9. Group by con más de una variable. 
+10.  Filtrar y luego agrupar.
