@@ -1,0 +1,494 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+
+\usetheme{Madrid}
+
+\usepackage{xcolor}
+\definecolor{myblue}{HTML}{427A92}
+\setbeamercolor{structure}{fg=myblue}
+\setbeamercolor{frametitle}{bg=myblue}
+
+\setbeamerfont{frametitle}{size=\huge}
+
+\title[2.4. Pruebas No Paramétricas]{\Huge 2.4. Pruebas No Paramétricas}
+\subtitle{2. Estadística y Probabilidad Básica}
+
+\author{Christian E. Galarza}
+\date{\bf Programa New Dimensions}
+
+
+\begin{document}
+
+\frame{\titlepage}
+
+% Diapositiva 1: Introducción a las Pruebas No Paramétricas
+\begin{frame}
+\frametitle{Introducción a las Pruebas No Paramétricas}
+\begin{itemize}
+\item Alternativa a las pruebas paramétricas.
+\item No asumen una distribución específica.
+\item Útiles cuando no se cumplen supuestos.
+\end{itemize}
+\end{frame}
+
+% Diapositiva 3: Supuestos Comunes en Pruebas de Hipótesis
+\begin{frame}
+\frametitle{Supuestos Comunes en Pruebas de Hipótesis}
+\begin{itemize}
+\item Independencia de observaciones.
+\item Normalidad de los datos.
+\item Homocedasticidad.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Supuestos en Pruebas de Hipótesis}
+
+\begin{itemize}
+    \item \textbf{T de Student (Una media):}
+    \begin{itemize}
+        \item Muestra aleatoria.
+        \item Distribución normal o tamaño de muestra grande.
+        \item Varianza conocida o desconocida pero estimable.
+    \end{itemize}
+
+\vfill
+
+    \item \textbf{T de Student (Pares de medias):}
+    \begin{itemize}
+        \item Muestras aleatorias y dependientes.
+        \item Diferencias distribuidas normalmente.
+    \end{itemize}
+        \end{itemize}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Supuestos en Pruebas de Hipótesis}
+    \begin{itemize}
+    \item \textbf{1 y 2 proporciones:}
+    \begin{itemize}
+        \item Muestras aleatorias e independientes.
+        \item Tamaño de muestra suficientemente grande (para que np y n(1-p) sean $\geq$ 5).
+    \end{itemize}
+
+\vfill
+
+    \item \textbf{ANOVA:}
+    \begin{itemize}
+        \item Muestras aleatorias e independientes.
+        \item Distribuciones normalmente distribuidas en cada grupo.
+        \item Homocedasticidad (varianzas iguales entre grupos).
+    \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+% Diapositiva 4: El Tamaño de la Muestra
+\begin{frame}
+\frametitle{El Tamaño de la Muestra}
+\begin{itemize}
+    \item Determina poder estadístico.
+    \item Afecta precisión y confiabilidad.
+    \item Implicaciones en validez de pruebas.
+    \item Si la muestra no es lo suficientemente grande para pruebas de proporción o medias:
+    \begin{itemize}
+        \item Supuesto de normalidad puede omitirse...
+        \item ... si se cumple el Teorema del Límite Central.
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+% Diapositiva 5: Generación de Datos y Estadísticas
+\begin{frame}
+\frametitle{Generación de Datos y Estadísticas}
+\begin{itemize}
+    \item \textbf{Uso de simulaciones:}
+    \begin{itemize}
+        \item Generar muestras aleatorias bajo ciertas hipótesis.
+        \item Estimar la distribución de una estadística.
+        \item Comprender escenarios bajo diferentes supuestos.
+    \end{itemize}
+    
+    \item \textbf{Herramientas estadísticas:}
+    \begin{itemize}
+        \item Softwares como R, Python, SAS y SPSS.
+        \item Funciones y paquetes específicos para pruebas no paramétricas.
+    \end{itemize}
+    
+    \item \textbf{Técnicas para pruebas no paramétricas:}
+    \begin{itemize}
+        \item Uso de rangos en lugar de datos brutos.
+        \item Pruebas como Wilcoxon, Kruskal-Wallis.
+        \item Aplicación cuando no se cumplen supuestos de normalidad o varianza homogénea.
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+% Diapositiva 6: Estadística Observada y Valor-p
+\begin{frame}
+\frametitle{Estadística Observada y Valor-p}
+\[ H_0: \mu = \mu_0 \]
+\[ H_1: \mu \neq \mu_0 \]
+\begin{itemize}
+    \item \textbf{Interpretación del valor-p:}
+    \begin{itemize}
+        \item Probabilidad bajo la hipótesis nula.
+        \item Un valor-p pequeño sugiere evidencia contra \(H_0\).
+    \end{itemize}
+    
+    \item \textbf{Decisión basada en nivel de significancia:}
+    \begin{itemize}
+        \item Usualmente \( \alpha = 0.05 \).
+        \item Si valor-p \(< \alpha\), rechazamos \(H_0\).
+        \item Significa que los datos observados son incompatibles con \(H_0\) a ese nivel de significancia.
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+% Diapositiva 7a: Matemática detrás del ANOVA No Paramétrico
+\begin{frame}
+\frametitle{Matemática de ANOVA No Paramétrico}
+\begin{itemize}
+\item Kruskal-Wallis: versión no paramétrica de ANOVA.
+\item Estadístico \( H \): basado en rangos.
+\item Distribución aproximadamente \(\chi^2\) con \( k - 1 \) grados de libertad.
+\end{itemize}
+\end{frame}
+
+% Diapositiva 1: Proceso de cálculo de rangos - Paso 1 y 2
+\begin{frame}
+\frametitle{Cálculo de Rangos - Pasos 1 y 2}
+\textbf{1. Ordenar los Datos}
+\begin{itemize}
+\item Ordena todos los datos, sin importar el grupo.
+\item De menor a mayor.
+\end{itemize}
+
+\textbf{2. Asignar Rangos}
+\begin{itemize}
+\item Asigna un rango al dato más pequeño (rango 1).
+
+
+\item Continúa consecutivamente: el siguiente dato recibe el rango 2, y así sucesivamente.
+\end{itemize}
+\end{frame}
+
+% Diapositiva 2: Proceso de cálculo de rangos - Paso 3
+\begin{frame}
+\frametitle{Cálculo de Rangos - Paso 3}
+\textbf{3. Tratamiento de Empates (Datos Repetidos)}
+\begin{itemize}
+\item Si dos o más datos son idénticos, se les da el promedio de los rangos que habrían obtenido si fueran diferentes.
+\item Ejemplo: Si los rangos 3 y 4 corresponden a datos idénticos, ambos datos reciben el rango \( \frac{3 + 4}{2} = 3.5 \).
+\end{itemize}
+\vfill
+
+\textbf{Ejemplo:}\\ 
+Datos: 5, 5, 6, 7, 7, 7\\
+Rangos: 1.5, 1.5, 3, 5, 5, 5.
+\end{frame}
+
+
+
+% Diapositiva 7b: Ejemplo de ANOVA No Paramétrico
+\begin{frame}
+\frametitle{Ejemplo de ANOVA No Paramétrico}
+\textbf{Enunciado:} Suponga que se quiere comparar la satisfacción de clientes entre tres tiendas distintas. Las valoraciones no siguen una distribución normal. ¿Existen diferencias significativas entre las tiendas?
+\end{frame}
+
+
+
+% Diapositiva: Ejemplo de cálculo de rangos y Prueba de Kruskal-Wallis
+\begin{frame}
+\frametitle{Prueba de Kruskal-Wallis y cálculo de rangos}
+\textbf{Datos (Satisfacción de clientes en 3 tiendas):}
+\begin{align*}
+\text{Tienda A:} & \quad 5, 6, 7 \\
+\text{Tienda B:} & \quad 8, 9, 6 \\
+\text{Tienda C:} & \quad 7, 7, 8 
+\end{align*}
+\textbf{Rangos:}
+\begin{align*}
+\text{5:} & \quad 1 \\
+\text{6:} & \quad 2.5 \quad (\text{promedio de rangos para 6 y 6}) \\
+\text{7:} & \quad 5 \quad (\text{promedio de rangos para 7, 7 y 7}) \\
+\text{8:} & \quad 7.5 \quad (\text{promedio de rangos para 8 y 8}) \\
+\text{9:} & \quad 9 \\
+\end{align*}
+
+\textbf{Estadístico Kruskal-Wallis \( H \):} Se calcula usando los rangos asignados y las fórmulas correspondientes. 
+
+\textbf{Resultado:} Si el valor \( H \) es lo suficientemente grande, rechazamos la hipótesis nula de que las medianas de las tiendas son iguales.
+
+\end{frame}
+
+
+% Diapositiva 8a: Matemática detrás de Prueba t basada en Simulación
+\begin{frame}
+\frametitle{Prueba t basada en Simulación}
+\begin{itemize}
+\item Estadístico \( t \): mismo que en prueba t tradicional.
+\item En lugar de asumir una distribución t de Student, generamos una distribución empírica simulando bajo la hipótesis nula.
+\item El p-valor se obtiene comparando el estadístico observado con la distribución simulada.
+\end{itemize}
+\end{frame}
+
+% Diapositiva 8b: Pasos para realizar Prueba t basada en Simulación
+\begin{frame}
+\frametitle{Prueba t basada en Simulación (*)}
+\begin{enumerate}
+\item Calcular el estadístico \( t \) para las muestras observadas.
+\item Combinar ambas muestras y redistribuirlas aleatoriamente en dos nuevos grupos (simulación bajo H0).
+\item Calcular el estadístico \( t \) para esta redistribución.
+\item Repetir paso 2 y 3 muchas veces (ejemplo, 10,000 veces) para construir una distribución de \( t \) bajo la hipótesis nula.
+\item El p-valor es la proporción de veces que el \( t \) simulado es tan extremo o más extremo que el observado.
+\end{enumerate}
+\end{frame}
+
+
+% Diapositiva 9a: Generalidades de Prueba de Suma de Rangos
+\begin{frame}
+\frametitle{Prueba de Suma de Rangos}
+\begin{itemize}
+\item Es una prueba no paramétrica.
+\item Utilizada para comparar las {\bf medianas entre dos grupos}.
+\item Aplicada cuando se tienen datos ordinales o rangos.
+\item No asume normalidad de los datos.
+\item Prueba más utilizada: Test de Wilcoxon.
+\end{itemize}
+\end{frame}
+
+% Diapositiva 9b: Formulación Matemática de la Prueba de Suma de Rangos
+\begin{frame}
+\frametitle{Prueba de Suma de Rangos}
+\begin{itemize}
+\item Se asignan rangos a cada dato combinando ambos grupos.
+\item \( R_1 \): suma de rangos del grupo 1.
+\item \( R_2 \): suma de rangos del grupo 2.
+\item Estadístico de test \( W \) se basa en \( R_1 \) o \( R_2 \) (e.g., \( W = R_1 \) para Wilcoxon).
+\item Se compara \( W \) con una distribución esperada bajo H0.
+\end{itemize}
+\end{frame}
+
+% Diapositiva 9c: Observaciones y Ejemplo de Prueba de Suma de Rangos
+\begin{frame}
+\frametitle{Prueba de Suma de Rangos}
+\begin{itemize}
+\item Observaciones:
+  \begin{itemize}
+  \item Útil cuando los datos tienen outliers.
+  \item Menos poderosa que pruebas paramétricas con datos normales.
+  \end{itemize}
+\item Ejemplo:
+  \begin{itemize}
+  \item Queremos saber si dos técnicas de enseñanza tienen diferencias significativas en el rendimiento de estudiantes.
+  \item Los datos se presentan como rankings de rendimiento y no cumplen con normalidad.
+  \item Usamos la prueba de suma de rangos para comparar las medianas de rendimiento de ambos grupos.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Ejercicio Práctico: Prueba de Wilcoxon para Comparación de Medias}
+\textbf{Contexto:} 
+Una empresa de ventas al por menor quiere comparar las ventas antes y después de una campaña publicitaria. Selecciona aleatoriamente a 10 tiendas y registra sus ventas semanales antes y después de la campaña. ¿Tuvo un impacto significativo la campaña publicitaria?
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Ejercicio Práctico: Prueba de Wilcoxon para Comparación de Medias}
+\textbf{Datos:}
+\begin{table}
+\begin{tabular}{|c|c|c|}
+\hline
+Tienda & Ventas Antes (miles) & Ventas Después (miles) \\
+\hline
+1 & 50 & 55 \\
+2 & 45 & 47 \\
+3 & 60 & 62 \\
+4 & 53 & 54 \\
+5 & 49 & 52 \\
+6 & 52 & 58 \\
+7 & 48 & 49 \\
+8 & 55 & 57 \\
+9 & 54 & 56 \\
+10 & 50 & 51 \\
+\hline
+\end{tabular}
+\end{table}
+¿Las ventas mejoraron significativamente después de la campaña?
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Desarrollo Matemático: Prueba de Wilcoxon}
+Se desea probar:
+\[ H_0: \text{Las medianas de las ventas antes y después son iguales} \]
+\[ H_1: \text{Las medianas de las ventas después son mayores que antes} \]
+
+Pasos:
+\begin{enumerate}
+\item Calcular las diferencias (Después - Antes).
+\item Ordenar las diferencias en valor absoluto.
+\item Asignar rangos a las diferencias. En caso de empates, tomar el promedio de los rangos.
+\item Sumar los rangos de las diferencias positivas (R+).
+\item Utilizar la estadística de Wilcoxon: \( W = min(R+, R-) \).
+\item Comparar \( W \) con la distribución de Wilcoxon para determinar significancia.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{verbatim}
+# Datos
+ventas_antes <- c(50, 45, 60, 53, 49, 52, 48, 55, 54, 50)
+ventas_despues <- c(55, 47, 62, 54, 52, 58, 49, 57, 56, 51)
+
+# Realizar la prueba de Wilcoxon
+resultado <- wilcox.test(ventas_antes, ventas_despues, paired = TRUE, alternative = "less")
+
+# Imprimir p-valor
+print(resultado$p.value)
+\end{verbatim}
+Si el \( p-valor \) es menor que 0.05, rechazamos \( H_0 \) y concluimos que las ventas mejoraron significativamente después de la campaña.
+\end{frame}
+
+
+
+
+% Diapositiva 10: Conclusión y Recomendaciones
+\begin{frame}
+\frametitle{Conclusión y Recomendaciones}
+\begin{itemize}
+\item \textbf{Versatilidad}: Las técnicas no paramétricas son esenciales cuando los datos no cumplen con supuestos específicos.
+\item \textbf{Investigación Robusta}: Permite la correcta interpretación de resultados, especialmente con datos no normales o con outliers.
+\item \textbf{Relevancia en el Mundo Real}: Muchos conjuntos de datos en la vida real no cumplen con los supuestos de normalidad.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{¡Atención!}
+\begin{itemize}
+    \item \textbf{Próxima clase:}
+    \begin{itemize}
+        \item Quiz de preguntas básicas sobre la Unidad 2.
+    \end{itemize}
+    \item \textbf{Práctica:}
+    \begin{itemize}
+        \item Ejercicios prácticos en R.
+    \end{itemize}
+    \item \textbf{Tareas:}
+    \begin{itemize}
+        \item Se enviará un deber relacionado con la Unidad 1 y 2.
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+
+\end{document}
+
+
+
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{Pruebas No Paramétricas}
+
+\begin{frame}
+\frametitle{Supuestos en las Pruebas de Hipótesis}
+
+\begin{itemize}
+    \item Las pruebas paramétricas requieren supuestos sobre la distribución de los datos.
+    \item Las pruebas no paramétricas no requieren estos supuestos.
+    \item Ejemplos de supuestos: normalidad, homogeneidad de varianzas.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Pruebas de Tamaño de Muestra}
+
+\begin{itemize}
+    \item Importante para determinar si la muestra es lo suficientemente grande.
+    \item Puede afectar la validez de los resultados.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{El Marco "Solo Hay Una Prueba"}
+
+\begin{itemize}
+    \item Un enfoque unificado para realizar pruebas de hipótesis.
+    \item Incluye especificar, hipotetizar, generar y calcular.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{ANOVA y Pruebas t No Paramétricas}
+
+\begin{itemize}
+    \item Alternativas a las pruebas paramétricas cuando no se cumplen los supuestos.
+    \item Ejemplos: Prueba de suma de rangos, prueba t basada en simulación.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Ejemplo Práctico: Prueba de Suma de Rangos}
+
+Supongamos que queremos comparar dos grupos con distribuciones desconocidas.
+
+\begin{itemize}
+    \item Grupo A: 10, 20, 15, 12, 18
+    \item Grupo B: 5, 7, 8, 6, 9
+\end{itemize}
+
+Utilizaremos la prueba de suma de rangos para determinar si hay una diferencia significativa.
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Código en R: Prueba de Suma de Rangos}
+
+\begin{verbatim}
+# Datos
+grupo_a <- c(10, 20, 15, 12, 18)
+grupo_b <- c(5, 7, 8, 6, 9)
+
+# Realizar la prueba de suma de rangos
+resultado <- wilcox.test(grupo_a, grupo_b)
+print(resultado)
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Interpretación del Resultado}
+
+Si el valor p obtenido es menor que el nivel de significancia (por ejemplo, 0.05), rechazamos la hipótesis nula y concluimos que hay una diferencia significativa entre los grupos.
+
+\end{frame}
+
+
+\end{document}

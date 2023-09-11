@@ -1,0 +1,245 @@
+---
+title: "Deber de Inferencia Estadística"
+author: "Christian Galarza"
+date: "2023-08-25"
+output: html_document
+---
+
+## Introducción
+
+Este es un deber sobre inferencia estadística. Deberás completar los ejercicios propuestos y desarrollar tus respuestas en las secciones correspondientes. Recuerda que puedes consultar cualquier material o recurso que necesites para completar este deber. Puedes generar gráficos descriptivos que te ayuden a prever  la decisión a la que llegues.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+# Escribe tus códigos aquí (librerías necesarias)
+```
+
+### Ejercicio 1: Comparación de ingresos medios
+
+Estás comparando los ingresos medios de dos grupos diferentes de trabajadores. ¿Qué grupo tiene un ingreso promedio más alto?
+
+```{r}
+# Aquí van los datos y el código proporcionado
+trabajadores1 <- c(2250.874, 2178.265, 1955.121, 2430.015, 2659.831, 2713.799, 2375.522,
+                   2993.470, 2303.118, 2331.465, 2066.033, 2235.951, 3005.093, 2596.543,
+                   2156.393, 2067.230, 2206.910, 2769.340, 3197.505, 2485.516, 2289.275,
+                   2492.882, 2938.398, 2578.256, 2488.872, 2060.718, 2643.604, 2725.154,
+                   3179.045, 2917.966, 1915.504, 2957.806, 2410.418, 2320.605, 2649.970,
+                   2626.137, 2466.415, 2697.411, 2395.003, 2367.791, 2181.179, 2813.058,
+                   2823.114, 2516.957, 1718.990, 2533.165, 2060.041, 2539.865, 2883.900,
+                   2699.181)
+trabajadores2 <- c(2075.544, 2260.147, 2210.747, 2125.751, 2280.511, 2353.806, 2375.084,
+                   2572.256, 1681.255, 2378.751, 2001.336, 2497.114, 2186.822, 2310.368,
+                   2775.799, 2218.408, 2191.969, 2401.429, 2144.689, 2036.791, 2390.669,
+                   2476.481, 2316.912, 1819.158, 2588.756, 2303.756, 2142.683, 2450.559,
+                   2172.056, 2010.873, 2294.688, 2205.054, 2479.581, 2883.266, 2066.749,
+                   2469.883, 2314.934, 2415.943, 2139.904, 2336.129, 1956.293, 2384.111,
+                   2281.950, 2696.983, 2350.144, 2055.625, 2531.372, 2058.953, 2074.512,
+                   2422.559, 2381.457, 2512.807, 2604.340, 2222.830, 2289.438, 2410.723,
+                   2784.361, 2518.547, 2436.065, 1606.304)
+
+datos <- data.frame(
+  salario = c(trabajadores1, trabajadores2),
+  grupo = factor(rep(1:2, times = c(length(trabajadores1),length(trabajadores2))), labels=c("Trabajadores 1", "Trabajadores 2"))
+)
+
+ggplot(datos, aes(x=salario, fill=grupo)) +
+  geom_histogram(position="identity", alpha=0.5, bins=30) +
+  theme_minimal() +
+  labs(title = "Distribución de Salarios", y = "Frecuencia", x = "Salario") +
+  scale_fill_manual(values=c("#F8766D", "#00BA38"))
+
+ggplot(datos, aes(x=grupo, y=salario, fill=grupo)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(title = "Distribución de Salarios", y = "Salario", x = "Grupo") +
+  scale_fill_manual(values=c("#F8766D", "#00BA38"))
+# Escribe tus códigos aquí
+```
+
+**Respuesta:**
+
+Escribe aquí tu respuesta.
+
+<br>
+<br>
+
+### Ejercicio 2: Comparación de clics en anuncios
+
+Deseas comparar la cantidad de clics que reciben dos anuncios diferentes en tu sitio web. ¿Qué anuncio recibe más clics en promedio?
+
+```{r}
+anuncio1 <- c(5, 4, 5, 6, 4, 5, 7, 5, 6, 6)
+anuncio2 <- c(5, 6, 5, 7, 5, 5, 6, 7, 7, 6)
+wilcox.test(anuncio1, anuncio2)
+# Escribe tus códigos aquí
+```
+
+**Respuesta:**
+
+Escribe aquí tu respuesta.
+
+
+
+
+
+
+<br>
+<br>
+
+### Ejercicio 3: Comparación de puntuaciones
+
+Los datos que tienes no cumplen con las suposiciones de normalidad y deseas comparar las puntuaciones medias de dos grupos. ¿Qué grupo tiene una puntuación promedio más alta?
+
+
+```{r}
+grupoA <- c(5, 5, 5, 6, 6, 5, 5, 6, 5)
+grupoB <- c(6, 6, 7, 7, 6, 6, 7, 6, 6)
+wilcox.test(grupoA, grupoB)
+# Escribe tus códigos aquí 
+```
+
+**Respuesta:**
+
+Escribe aquí tu respuesta.
+
+
+
+
+<br>
+<br>
+
+### Ejercicio 4: Comparación de calificaciones
+
+Quieres comparar la calificación media en un examen entre tres grupos de estudiantes que fueron enseñados con diferentes métodos. ¿Qué método resultó en la calificación promedio más alta?
+
+```{r}
+metodo1 <- c(85.16604, 96.41423, 80.24083, 69.01759, 86.62736, 81.28230, 60.05736,
+             77.63138, 70.82957, 94.19740, 99.21297, 67.49700, 82.71771, 69.84389,
+             58.50793, 72.59032, 70.63635, 70.56013, 78.98900, 78.88020, 77.60133,
+             84.47364, 78.96169, 90.36164, 70.66543, 82.72645, 62.81343, 62.22004,
+             89.57059, 68.21929, 80.86281, 91.00737, 82.99863, 73.69575, 89.99427,
+             80.54828, 68.75133, 72.01811, 58.22004, 81.99664)
+metodo2 <- c(86.86874, 97.52225, 76.52569, 74.04482, 68.67770, 95.23782, 79.12071,
+             79.52839, 83.48983, 81.17170, 85.72342, 85.15654, 72.71554, 78.22245,
+             76.92262, 73.23591, 79.66591, 78.60100, 79.50238, 83.82224, 76.71138,
+             91.83204, 69.53986, 64.58984, 85.12009, 68.48304, 83.55921, 83.98342,
+             69.86244, 83.17494, 78.79085, 78.25213, 72.51925, 84.99407, 57.00238,
+             82.74854, 72.51887, 63.28735, 74.38203, 89.13157)
+metodo3 <- c(92.82768, 76.75622, 69.07096, 83.50877, 56.74143, 67.21914, 68.98307,
+             83.68246, 79.87134, 79.73691, 82.57452, 63.67311, 60.34452, 74.22729,
+             77.65000, 79.49056, 78.44512, 60.52712, 97.49574, 66.68088, 74.46574,
+             79.05737, 69.92555, 89.83452, 89.10452, 65.20591, 72.80191, 76.06882,
+             69.22514, 56.25000, 86.28191, 78.70482, 91.50943, 82.77311, 81.66604,
+             76.28205, 78.71795, 92.30769, 76.92308, 79.48718)
+
+df <- data.frame(
+  Calificacion = c(metodo1, metodo2, metodo3),
+  Metodo = factor(rep(1:3, each=40))
+)
+
+ggplot(df, aes(x=Metodo, y=Calificacion)) +
+  geom_boxplot(aes(fill=Metodo)) + 
+  labs(title="Diagrama de Cajas Comparativo de los Tres Métodos", 
+       x="Método", 
+       y="Calificación") + 
+  theme_minimal()
+
+# Ejecutar ANOVA
+aov_res <- aov(Calificacion ~ Metodo, data=df)
+summary(aov_res)
+# Escribe tus códigos aquí 
+```
+
+
+**Respuesta:**
+
+Escribe aquí tu respuesta.
+
+
+
+
+<br>
+<br>
+
+### Ejercicio 5: Preferencia de productos
+
+Estás interesado en determinar si la proporción de clientes que compran el Producto A es diferente de la proporción de clientes que compran el Producto B. ¿Cuál producto es preferido?
+
+```{r}
+productoA <- c(0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0,
+               0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1,
+               0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0,
+               1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1,
+               0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1,
+               1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0,
+               0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0,
+               1, 1, 1, 0)
+
+productoB <- c(1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0,
+               1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1,
+               0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0,
+               1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1,
+               0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0,
+               0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0,
+               1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0,
+               0, 0, 0, 1)
+
+prop.test(x = c(sum(productoA), sum(productoB)),
+          n = c(length(productoA), length(productoB)))
+# Escribe tus códigos aquí 
+```
+
+**Respuesta:**
+
+Escribe aquí tu respuesta.
+
+
+
+<br>
+<br>
+
+### Ejercicio 6: Efectividad de un medicamento
+
+Un estudio investiga el efecto de un nuevo medicamento para el dolor de cabeza. Se toma una muestra de 10 personas que sufren de dolor de cabeza y se les administra el medicamento. Una semana después, se les vuelve a tomar una muestra para medir el nivel de dolor. Los datos se pueden suponer normales y estos son:
+
+```{r}
+# Datos antes del medicamento
+antes_medicamento <- c(6.2, 6.8, 7.0, 7.4, 7.6, 7.8, 8.0, 8.2, 8.4, 8.6)
+# Datos después del medicamento
+despues_medicamento <- c(5.8, 6.0, 6.2, 6.4, 6.6, 6.8, 7.0, 7.2, 7.4, 7.6)
+# Escribe tus códigos aquí 
+```
+
+¿Hay evidencia de que el medicamento sea efectivo para reducir el dolor de cabeza?
+
+**Respuesta:**
+
+Escribe aquí tu respuesta.
+
+
+
+<br>
+<br>
+
+### Ejercicio 7: Relación entre género y preferencia política
+
+
+Un estudio investiga la relación entre el género y la preferencia política. Se toma una muestra de 100 personas y se les pregunta sobre su género y su preferencia política.
+
+```{r}
+# Creación del data frame para la tabla
+tabla <- data.frame(
+  genero = c("hombre", "hombre", "hombre", "mujer", "mujer", "mujer"),
+  preferencia_politica = c("izquierda", "centro", "derecha", "izquierda", "centro", "derecha"),
+  cantidad = c(20, 30, 50, 10, 20, 70)
+)
+
+tabla
+# Escribe tus códigos aquí 
+```
+
+**Respuesta:**
+
+Escribe aquí tu respuesta.

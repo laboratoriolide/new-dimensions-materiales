@@ -1,0 +1,235 @@
+
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+
+\usetheme{Madrid}
+
+\usepackage{xcolor}
+\definecolor{myblue}{HTML}{427A92}
+\setbeamercolor{structure}{fg=myblue}
+\setbeamercolor{frametitle}{bg=myblue}
+
+\setbeamerfont{frametitle}{size=\huge}
+
+\title[2.2. Pruebas de Dos Muestras y ANOVA]{\Huge 2.2. Pruebas de Dos Muestras y ANOVA}
+\subtitle{2. Estadística y Probabilidad Básica}
+
+\author{Christian E. Galarza}
+\date{\bf Programa New Dimensions}
+
+\begin{document}
+
+\frame{\titlepage}
+
+% Diapositiva: Performing t-tests - Introducción
+% Diapositiva: Performing t-tests - Introducción
+\begin{frame}
+    \frametitle{Pruebas $t$ para comparaciones de medias}
+    \textbf{¿Qué es una prueba t?}
+    \begin{itemize}
+        \item Herramienta estadística para comparar las medias de dos grupos.
+        \item Determina si las diferencias observadas son por casualidad o estadísticamente significativas.
+        \item Esencial en la toma de decisiones basada en datos.
+    \end{itemize}
+
+\vfill
+    
+    \textbf{Ejemplo:} ¿Los empleados con capacitación tienen un rendimiento significativamente diferente que aquellos sin capacitación?
+\end{frame}
+
+% Diapositiva: Hypothesis testing workflow
+\begin{frame}
+    \frametitle{¿Cómo realizar un contraste de hipótesis?}
+    \begin{itemize}
+        \item Establecer hipótesis nula (\(H_0\)): No hay diferencia entre los dos grupos.
+        \item Hipótesis alternativa (\(H_a\)): Hay una diferencia significativa.
+        
+        \item Calcular estadístico de prueba y el $p$-valor.
+        \item Tomar una decisión basada en el $p$-valor.
+    \end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Ejemplo: Contraste de hipótesis para empleados con/sin capacitación}
+    
+    \textbf{1. Establecer hipótesis nula (\(H_0\)) y alternativa (\(H_a\)):}
+    \begin{itemize}
+        \item \(H_0\): La media del rendimiento de los empleados con capacitación es igual a la de los empleados sin capacitación.
+        \item \(H_a\): La media del rendimiento de los empleados con capacitación es diferente de la de los empleados sin capacitación.
+    \end{itemize}
+    
+    \textbf{2. Elegir nivel de significancia (\(\alpha\)):}
+    \begin{itemize}
+        \item \(\alpha = 0.05\).
+    \end{itemize}
+
+\end{frame}
+
+    \begin{frame}
+    \frametitle{Ejemplo: Contraste de hipótesis para empleados con/sin capacitación}
+    \textbf{3. Calcular estadístico de prueba y el \(p\)-valor:}
+    \begin{itemize}
+        \item Estadístico de prueba \(t = 2.5\).
+        \item \(p\)-valor = \(0.03\).
+    \end{itemize}
+    
+    \textbf{4. Tomar una decisión:}
+    \begin{itemize}
+        \item \(p\)-valor \(0.03 < \alpha = 0.05\).
+        \item Rechazamos \(H_0\): Hay una diferencia significativa en el rendimiento entre los grupos.
+    \end{itemize}
+\end{frame}
+
+
+
+
+
+% Diapositiva: Two sample mean test statistic
+\begin{frame}
+    \frametitle{Estadístico de prueba $t$}
+    Fórmula (simplificada):
+    \[
+    t = \frac{\bar{X}_1 - \bar{X}_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}
+    \]
+
+\vfill
+
+    \textbf{Interpretación:} Cuanto mayor sea el valor de \(t\), mayor será la diferencia entre los grupos.
+
+\vfill
+    
+    \textbf{Ejemplo:} Comparar las ventas medias de dos tiendas.
+
+\end{frame}
+
+% Diapositiva: Calculating p-values from t-statistics
+\begin{frame}
+\frametitle{Cálculo de valor $p$ en pruebas $t$}
+\begin{center}
+\includegraphics[width=0.8\linewidth]{Figuras/how-to-find-p-value.png} % Imagen de una distribución con las colas marcadas.    
+\end{center}
+\end{frame}
+
+
+% Diapositiva: Paired t-tests - Introducción
+\begin{frame}
+    \frametitle{Prueba t pareada}
+    \textbf{¿Qué es una prueba t pareada?}
+    \begin{itemize}
+        \item Compara las medias de dos mediciones relacionadas.
+        \item Útil cuando las observaciones son dependientes o emparejadas.
+        \item Ejemplo: rendimiento de empleados antes y después de una capacitación.
+    \end{itemize}
+
+\end{frame}
+
+% Diapositiva: Is pairing needed?
+\begin{frame}
+    \frametitle{¿Cuándo necesitamos considerar una prueba pareada?}
+    \begin{itemize}
+        \item Parear es útil cuando las observaciones no son independientes.
+        \item Reduce la variabilidad y mejora la precisión.
+        \item Esencial para obtener resultados confiables.
+    \end{itemize}
+
+\vfill
+    
+    \textbf{Otro ejemplo:} Medir la satisfacción del cliente antes y después de implementar un cambio.
+\end{frame}
+
+% Diapositiva: Using t.test()
+\begin{frame}
+    \frametitle{Usando \verb|t.test()|}
+
+    \textbf{t.test()} es una función de R
+    \begin{itemize}
+        \item Realiza automáticamente pruebas t.
+        \item Proporciona estadístico de prueba y p-valor.
+        \item Facilita la interpretación y toma de decisiones.
+    \end{itemize}
+
+\end{frame}
+
+% Diapositiva: ANOVA tests - Introducción
+\begin{frame}
+    \frametitle{ANOVA tests}
+    \textbf{¿Qué es ANOVA?}
+    \begin{itemize}
+        \item Herramienta estadística para comparar las medias de tres o más grupos.
+        \item Determina si al menos un grupo es diferente de los demás.
+        \item Esencial cuando se tienen múltiples categorías o niveles.
+    \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Hipótesis para la prueba ANOVA}
+\begin{itemize}
+    \item \textbf{Hipótesis nula (\(H_0\))}: Todas las medias de los grupos son iguales.
+    \item \textbf{Hipótesis alterna (\(H_a\))}: Al menos una de las medias de los grupos es diferente.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Hipótesis para la prueba ANOVA}
+\begin{itemize}
+    \item \textbf{Hipótesis nula (\(H_0\))}: \( \mu_1 = \mu_2 = \ldots = \mu_k \)
+    \item \textbf{Hipótesis alterna (\(H_a\))}: Al menos una \( \mu_i \) es diferente de las otras.
+\end{itemize}
+\end{frame}
+
+
+
+
+% Diapositiva: Calculating p-values from t-statistics
+\begin{frame}
+\frametitle{Prueba ANOVA}
+\begin{center}
+\includegraphics[width=0.8\linewidth]{Figuras/tabla-anova-spss.jpg} % Imagen de una distribución con las colas marcadas.    
+\end{center}
+\end{frame}
+
+
+
+
+% Diapositiva: Conducting an ANOVA test
+\begin{frame}
+    \frametitle{Prueba ANOVA}
+    \begin{itemize}
+        \item Establecer hipótesis.
+        \item Calcular estadístico F y p-valor.
+        \item Si p-valor < \(\alpha\), al menos un grupo es diferente.
+        \item Interpretar resultados y tomar decisiones.
+    \end{itemize}
+
+\vfill
+
+    
+    \textbf{Ejemplo:} Comparar las ventas en diferentes regiones.
+\end{frame}
+
+
+
+
+% Diapositiva: Pairwise t-tests
+\begin{frame}
+    \frametitle{Pruebas $t$ para todos los pares}
+    \textbf{¿Por qué pruebas t por pares después de ANOVA?}
+    \begin{itemize}
+        \item ANOVA nos dice si hay diferencias, pero no entre qué grupos.
+        \item Las pruebas t por pares comparan cada par de grupos.
+        \item Ayuda a identificar dónde están las diferencias.
+    \end{itemize}
+
+\vfill
+    \textbf{Ejemplo:} Determinar qué regiones tienen ventas significativamente diferentes.
+\end{frame}
+
+
+
+\end{document}

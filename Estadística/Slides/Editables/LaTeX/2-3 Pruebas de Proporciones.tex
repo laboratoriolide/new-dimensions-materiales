@@ -1,0 +1,448 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+
+\usetheme{Madrid}
+
+\usepackage{xcolor}
+\definecolor{myblue}{HTML}{427A92}
+\setbeamercolor{structure}{fg=myblue}
+\setbeamercolor{frametitle}{bg=myblue}
+
+\setbeamerfont{frametitle}{size=\huge}
+
+\title[2.3. Pruebas de Proporciones]{\Huge 2.3. Pruebas de Proporciones}
+\subtitle{2. Estadística y Probabilidad Básica}
+
+\author{Christian E. Galarza}
+\date{\bf Programa New Dimensions}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{Pruebas de Proporciones}
+
+\begin{frame}
+\frametitle{Introducción a las Pruebas de Proporciones}
+
+\begin{itemize}
+    \item Las pruebas de proporciones se utilizan para comparar proporciones entre grupos.
+    \item Pueden ser de una muestra, dos muestras o múltiples muestras.
+    \item Las pruebas chi-cuadrado son comunes en este contexto.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Prueba de una Proporción}
+
+\begin{itemize}
+    \item Permite evaluar si es razonable pensar que la proporción de real es igual, mayor, o menor a alguna cantidad propuesta.
+    \item Pueden ser pruebas de una cola o dos.
+    \item La idea, como siempre, es a través de una muestra mostrar si existe evidencia significativa que apunte a que la hipótesis nula es falsa.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Contraste de Hipótesis para una Proporción}
+
+\textbf{Ejemplo 1: Una cola a la izquierda}
+
+
+Se ha afirmado que la proporción de estudiantes en una universidad que poseen su propio vehículo es 0.5. Una encuesta reciente, realizada a una muestra de 200 estudiantes, encontró que 90 de ellos poseen un vehículo. ¿Hay evidencia suficiente para afirmar que la proporción ha disminuido?
+
+\[ H_0: p = 0.5 \]
+\[ H_1: p < 0.5 \]
+
+
+
+
+
+
+\end{frame}
+
+\begin{frame}{Contraste de Hipótesis para una Proporción}
+
+\textbf{Ejemplo 2: Una cola a la derecha}
+
+
+Una compañía farmacéutica afirma que solo el 8\% de los usuarios experimentan efectos secundarios con su nuevo medicamento. Sin embargo, en una muestra de 300 pacientes, 35 reportaron haber experimentado efectos secundarios. ¿Hay evidencia suficiente para afirmar que la proporción es mayor que el 8\%?
+
+\[ H_0: p = 0.08 \]
+\[ H_1: p > 0.08 \]
+
+\end{frame}
+
+
+
+\begin{frame}{Contraste de Hipótesis para una Proporción: Dos Colas}
+
+
+Se afirma que la proporción de ciudadanos que están a favor de una nueva ley es del 60\%. Una organización ha encuestado a 250 ciudadanos, y 135 expresaron su apoyo. ¿Hay evidencia suficiente para afirmar que la proporción ha cambiado?
+
+\[ H_0: p = 0.6 \]
+\[ H_1: p \neq 0.6 \]
+
+\end{frame}
+
+
+
+% Calculating confidence intervals for proportions
+\begin{frame}
+\frametitle{Cálculo de intervalos de confianza para proporciones}
+El intervalo de confianza para proporciones nos da un rango en el que es probable que se encuentre una proporción poblacional. Al igual que con las medias, nos proporciona una idea de la incertidumbre asociada con nuestras estimaciones de proporciones.
+
+\vfill
+
+Es exactamente lo que se levanta en casos electorales cuando queremos estimar la proporción de intención de voto para un determinado candidato. {\bf ¿Han escuchado antes de que se dice ``con un 95\% de confianza''?}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Fórmula del intervalo de confianza para proporciones}
+Un intervalo de confianza del \( (1-\alpha)\% \) de confianza para una proporción \( p \) está dado por:
+\[ \text{IC}(p) =  \hat{p} \pm Z_{\alpha/2} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}, \]
+donde \( \hat{p} \) es la proporción muestral y \( Z_{\alpha/2} \) es el valor crítico de una distribución normal (el cual dependerá del nivel de confianza).
+
+\vfill
+
+{\bf El intervalo de confianza arriba funciona para tamaños de muestra grandes ($n>30$). Esto es porque el mismo sigue del teorema de límite central.}
+
+
+%\includegraphics[width=0.7\linewidth]{confidence_interval_proportions.png} % Imagen de una distribución con el intervalo de confianza marcado.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Prueba de Dos Proporciones}
+
+\begin{itemize}
+    \item Compara las proporciones de dos grupos.
+
+    \item La hipótesis nula \( H_0 \): las proporciones son iguales.
+    \item La hipótesis alterna \( H_a \): las proporciones son diferentes.
+\end{itemize}
+
+\vfill
+
+Puede especificarse que una es mayor o menor que la otra, teniéndose en ese caso una prueba de una sola cola.
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Notación Matemática para la Prueba de Dos Proporciones}
+
+\begin{itemize}
+    \item Supongamos que las proporciones de la población son \( p_1 \) y \( p_2 \).
+    \item Las proporciones de la muestra son \( \hat{p}_1 \) y \( \hat{p}_2 \).
+    \item \( n_1 \) y \( n_2 \) son los tamaños de las dos muestras.
+\end{itemize}
+
+\vfill
+
+\textbf{Hipótesis nula y alterna:}
+\begin{align*}
+H_0 &: p_1 = p_2 \\
+H_a &: p_1 \neq p_2
+\end{align*}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Notación Matemática para la Prueba de Dos Proporciones}
+
+
+\textbf{Estadístico de prueba (Z):}
+\[ Z = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{p_c(1-p_c) \left( \frac{1}{n_1} + \frac{1}{n_2} \right)}} \]
+donde \( p \) es la proporción combinada:
+\[ p_c = \frac{p_1 n_1 + p_2 n_2}{n_1 + n_2} =  \frac{n_1}{n_1 + n_2} \cdot p_1 + \frac{n_2}{n_1 + n_2} \cdot p_2 \]
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Ejemplo: Comparación de Proporciones}
+
+
+Una compañía quiere saber si la proporción de hombres que compra su producto es diferente a la proporción de mujeres que lo hace. Se toman dos muestras: de 300 hombres, 90 compraron el producto; de 250 mujeres, 65 compraron el producto. ¿Las proporciones de compradores son diferentes entre hombres y mujeres?
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Ejemplo: Comparación de Proporciones}
+
+\begin{itemize}
+    \item \textbf{Hipótesis:}
+    \begin{align*}
+    H_0 &: p_m = p_h \\
+    H_a &: p_m \neq p_h
+    \end{align*}
+
+    \vfill
+
+    \begin{align*}
+    H_0 &: p_m - p_h = 0 \\
+    H_a &: p_m - p_h \neq 0
+    \end{align*}
+
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Ejemplo: Comparación de Proporciones}
+
+\begin{itemize}
+
+    \item \textbf{Datos:} \( n_m = 250, \hat{p}_m = 0.26 \), \( n_h = 300, \hat{p}_h = 0.3 \)
+    
+    \item \textbf{Estadístico de prueba (Z):} 
+    \( Z \approx -1.42 \)
+    
+    \item \textbf{Valor p:} \( p \approx 0.31 \)
+
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Ejemplo: Comparación de Proporciones}
+
+
+    
+\begin{itemize}
+
+
+    \item \textbf{Decisión:} Como \( p = 0.31 \), no hay suficiente evidencia para rechazar \( H_0 \). 
+    
+    \vfill
+    
+    {\bf No hay evidencia para afirmar que las proporciones de compradores son diferentes entre hombres y mujeres.}
+\end{itemize}
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Ejemplo Práctico en R: Comparación de Proporciones de Votantes}
+
+Supongamos que queremos comparar la proporción de votantes en dos regiones diferentes.
+
+\begin{itemize}
+    \item Región A: 500 votantes de 1000 elegibles (50\%).
+    \item Región B: 300 votantes de 800 elegibles (37.5\%).
+\end{itemize}
+
+Utilizaremos una prueba de dos proporciones para determinar si hay una diferencia significativa en las proporciones de votantes entre las dos regiones.
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Código en R: Prueba de Dos Proporciones}
+
+\begin{verbatim}
+# Datos
+votantes <- c(500, 300)
+elegibles <- c(1000, 800)
+
+# Realizar la prueba de proporciones
+resultado <- prop.test(votantes, elegibles)
+print(resultado)
+\end{verbatim}
+
+\end{frame}
+
+
+
+
+% Diapositiva 1: Introducción a la Prueba de Independencia Chi cuadrada
+\begin{frame}
+\frametitle{Prueba de Independencia Chi cuadrada: Introducción}
+\begin{itemize}
+    \item Utilizada para probar la independencia entre dos variables categóricas.
+    \item Se basa en una tabla de contingencia, la cual muestra la distribución conjunta de las categorías de las variables.
+    \item Compara las frecuencias observadas con las frecuencias esperadas.
+\end{itemize}
+\end{frame}
+
+% Diapositiva 2: Formulación Matemática
+\begin{frame}
+\frametitle{Formulación Matemática}
+\[ \chi^2 = \sum \frac{(O_{ij} - E_{ij})^2}{E_{ij}} \]
+Donde:
+\begin{itemize}
+    \item \( \chi^2 \) es el estadístico Chi cuadrada.
+    \item \( O_{ij} \) es la frecuencia observada.
+    \item \( E_{ij} \) es la frecuencia esperada: \[ E_{ij} = \frac{\text{Total de fila i} \times \text{Total de columna j}}{\text{Total general}} \]
+\end{itemize}
+\end{frame}
+
+% Diapositiva 3: Ejemplo 1 - Enunciado
+\begin{frame}
+\frametitle{Ejemplo 1}
+
+Un investigador quiere saber si la elección de una carrera (Medicina, Ingeniería, Arte) está relacionada con el género del estudiante. Se realiza una encuesta a 200 estudiantes y se obtiene la siguiente tabla de contingencia:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+ & Medicina & Ingeniería & Arte \\
+\hline
+Hombres & 40 & 30 & 10 \\
+\hline
+Mujeres & 20 & 20 & 80 \\
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+
+% Diapositiva 5: Ejemplo 2 - Enunciado y Solución
+\begin{frame}
+\frametitle{Ejemplo 2}
+
+Una escuela desea conocer si el rendimiento académico (Alto, Medio, Bajo) está relacionado con la participación en actividades extraescolares (Sí, No).
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Rendimiento / Extraescolares & Sí & No \\
+\hline
+Alto & 35 & 20 \\
+\hline
+Medio & 25 & 30 \\
+\hline
+Bajo & 10 & 40 \\
+\hline
+\end{tabular}
+\end{center}
+
+\end{frame}
+
+
+
+% Diapositiva 1: Introducción a la Prueba de Bondad de Ajuste Chi cuadrada
+\begin{frame}
+\frametitle{Prueba Chi cuadrada para Bondad de Ajuste: Introducción}
+\begin{itemize}
+    \item Evalúa la diferencia entre una distribución observada y una teórica o esperada.
+    \item Útil para verificar si una muestra proviene de una población con una distribución conocida.
+    \item Se basa en calcular las diferencias entre frecuencias observadas y esperadas.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Ejemplo: Dado Balanceado}
+
+Un jugador sospecha que un dado no está balanceado. Lanza el dado 600 veces y registra los resultados:
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Número del dado & Observados & Esperados \\
+\hline
+1 & 110 & 100 \\
+\hline
+2 & 95 & 100 \\
+\hline
+3 & 108 & 100 \\
+\hline
+4 & 103 & 100 \\
+\hline
+5 & 92 & 100 \\
+\hline
+6 & 92 & 100 \\
+\hline
+\end{tabular}
+\end{center}
+
+¿El dado está balanceado?
+
+\end{frame}
+
+
+% Diapositiva 2: Formulación Matemática
+\begin{frame}
+\frametitle{Formulación Matemática}
+\[ \chi^2 = \sum \frac{(O_i - E_i)^2}{E_i} \]
+Donde:
+\begin{itemize}
+    \item \( \chi^2 \) es el estadístico Chi cuadrada.
+    \item \( O_i \) son las frecuencias observadas.
+    \item \( E_i \) son las frecuencias esperadas.
+\end{itemize}
+\end{frame}
+
+
+
+
+
+% Diapositiva 3: Ejemplo 1 - Enunciado
+\begin{frame}
+\frametitle{Ejemplo 1}
+
+Un restaurante afirma que las preferencias de postres de sus clientes se distribuyen de manera uniforme entre tres opciones: Pastel, Helado y Frutas. Se observan las elecciones de 120 clientes y se obtiene:
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Postre & Observados & Esperados \\
+\hline
+Pastel & 50 & 40 \\
+\hline
+Helado & 45 & 40 \\
+\hline
+Frutas & 25 & 40 \\
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+% Diapositiva 4: Ejemplo 2 - Enunciado
+\begin{frame}
+\frametitle{Ejemplo 2}
+
+Una tienda de mascotas afirma que las ventas de tres tipos de animales (Perros, Gatos, Pájaros) se distribuyen en proporciones de 40%, 40% y 20% respectivamente. Se revisan las ventas de 150 animales y se registra:
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Animal & Observados & Esperados \\
+\hline
+Perros & 70 & 60 \\
+\hline
+Gatos & 50 & 60 \\
+\hline
+Pájaros & 30 & 30 \\
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+% Diapositiva 5: Importancia y Aplicaciones
+\begin{frame}
+\frametitle{Importancia y Aplicaciones}
+\begin{itemize}
+    \item La prueba de bondad de ajuste es fundamental para validar suposiciones sobre distribuciones en muchos campos.
+    \item Se aplica en marketing, biología, ciencias sociales y más.
+    \item Es un primer paso esencial antes de aplicar técnicas que requieran suposiciones sobre la distribución de datos.
+\end{itemize}
+\end{frame}
+
+\end{document}
+

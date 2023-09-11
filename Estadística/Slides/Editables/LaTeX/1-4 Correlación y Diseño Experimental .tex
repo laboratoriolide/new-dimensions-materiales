@@ -1,0 +1,209 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+
+\usetheme{Madrid}
+\usepackage{xcolor}
+\definecolor{myblue}{HTML}{427A92}
+\setbeamercolor{structure}{fg=myblue}
+\setbeamercolor{frametitle}{bg=myblue}
+\setbeamerfont{frametitle}{size=\huge}
+
+\title[1.4. Correlación y Diseño Experimental]{\Huge 1.4 Correlación y Diseño Experimental}
+\subtitle{1. Estadística y Probabilidad Básica}
+\author{Christian E. Galarza}
+\date{\bf Programa New Dimensions}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{Correlación y Diseño Experimental}
+
+\subsection{Correlación}
+\begin{frame}
+\frametitle{Correlación}
+\begin{itemize}
+    \item La correlación mide la fuerza y dirección de la relación lineal entre dos variables.
+    \item El coeficiente de correlación de Pearson varía entre -1 y 1.
+    \item \( r = 1 \): correlación positiva perfecta; \( r = -1 \): correlación negativa perfecta; \( r = 0 \): no hay correlación.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Caveats de la Correlación}
+\begin{itemize}
+    \item La correlación no implica causalidad.
+    \item Sensible a valores atípicos.
+    \item No puede medir relaciones no lineales.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Transformación de Variables}
+\begin{itemize}
+    \item A veces, la transformación de variables puede revelar una relación lineal.
+    \item Ejemplo: aplicar logaritmo o raíz cuadrada.
+\end{itemize}
+\end{frame}
+
+\subsection{Confounders y Diseño Experimental}
+\begin{frame}
+\frametitle{Confounders}
+\begin{itemize}
+    \item Un confounder es una variable que está relacionada tanto con la variable independiente como con la dependiente.
+    \item Puede crear o ocultar una relación aparente entre las dos variables de interés.
+\end{itemize}
+\end{frame}
+
+\subsection{Introducción al Diseño de Experimentos}
+\begin{frame}
+\frametitle{¿Qué es el Diseño de Experimentos?}
+\begin{itemize}
+    \item Es una técnica estadística utilizada para planificar, diseñar y analizar experimentos.
+    \item Ayuda a maximizar la obtención de información, minimizando el uso de recursos.
+    \item Se enfoca en identificar las causas de variación en procesos y sistemas.
+    \item Permite estudiar los efectos de una o más variables independientes sobre una variable respuesta.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Principios Básicos}
+\begin{itemize}
+    \item \textbf{Replicación:} Realizar el mismo experimento varias veces para obtener una estimación de la variabilidad.
+    \item \textbf{Randomización:} Asignar al azar las unidades experimentales para evitar sesgos.
+    \item \textbf{Bloqueo:} Agrupar unidades experimentales similares para reducir la variabilidad y aislar factores de interés.
+\end{itemize}
+Ejemplo: Si queremos evaluar un nuevo medicamento, las personas podrían ser asignadas al azar a grupos de tratamiento o control, y se podría replicar el estudio en diferentes lugares para obtener resultados más robustos.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Tipos de Estudios}
+\begin{itemize}
+    \item Estudios Observacionales: el investigador observa sin intervenir.
+    \item Estudios Experimentales: el investigador interviene y controla las variables.
+\end{itemize}
+\end{frame}
+
+% Diapositiva sobre Estudios Observacionales
+\begin{frame}
+\frametitle{Estudios Observacionales}
+\begin{itemize}
+    \item Se basan en la observación y registro de eventos o características.
+    \item No hay intervención por parte del investigador.
+    \item Pueden ser descriptivos (simplemente observan y describen) o analíticos (buscan relaciones entre variables).
+    \item Ejemplos: Estudios de cohortes, estudios transversales y estudios de casos y controles.
+\end{itemize}
+\end{frame}
+
+% Diapositiva sobre Estudios Experimentales
+\begin{frame}
+\frametitle{Estudios Experimentales}
+\begin{itemize}
+    \item El investigador interviene y controla una o más variables.
+    \item Se busca determinar una relación causa-efecto.
+    \item Suelen incluir un grupo control y un grupo experimental.
+    \item Los participantes son asignados aleatoriamente a los grupos.
+    \item Ejemplo: Ensayos clínicos controlados, donde se evalúa la efectividad de un tratamiento.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Estudios Longitudinales vs. Transversales}
+\begin{itemize}
+    \item Estudios Longitudinales: se estudian a los individuos o unidades durante un período de tiempo.
+    \item Estudios Transversales: observan a los individuos o unidades en un solo punto en el tiempo.
+\end{itemize}
+\end{frame}
+
+
+% Diapositiva sobre Estudios Longitudinales
+\begin{frame}
+\frametitle{Estudios Longitudinales}
+\begin{itemize}
+    \item Estudian a los mismos sujetos a lo largo de un período de tiempo.
+    \item Observan cambios o evoluciones en las características o variables de interés.
+    \item Pueden durar desde meses hasta décadas.
+    \item Son útiles para identificar tendencias o cambios a lo largo del tiempo.
+    \item Ejemplo: Un estudio que sigue a una cohorte de individuos desde su infancia hasta la adultez para estudiar el desarrollo de ciertas enfermedades.
+\end{itemize}
+\end{frame}
+
+% Diapositiva sobre Estudios Transversales
+\begin{frame}
+\frametitle{Estudios Transversales}
+\begin{itemize}
+    \item Se realizan en un punto específico en el tiempo.
+    \item Se observan diferentes grupos o categorías al mismo tiempo.
+    \item No se sigue a los mismos sujetos a lo largo del tiempo como en los estudios longitudinales.
+    \item Son útiles para obtener una ``fotografía'' instantánea de una población en un momento dado.
+    \item Ejemplo: Una encuesta de salud que busca determinar la prevalencia de una enfermedad en diferentes grupos de edad en un año específico.
+\end{itemize}
+\end{frame}
+
+
+
+% \subsection{Ejemplo Práctico}
+% \begin{frame}
+% \frametitle{Ejemplo: Correlación entre Azúcar y Felicidad}
+% Supongamos que queremos estudiar la relación entre la cantidad de azúcar consumida y el nivel de felicidad en un grupo de individuos. Tenemos los siguientes datos:
+
+% \begin{itemize}
+%     \item Azúcar consumida (en gramos): \( X = [30, 40, 50, 60, 70] \)
+%     \item Nivel de felicidad (en una escala de 1 a 10): \( Y = [3, 4, 5, 6, 7] \)
+% \end{itemize}
+
+% Queremos calcular la correlación entre estas dos variables y determinar si hay una relación lineal positiva.
+% \end{frame}
+
+% \begin{frame}[fragile]
+% \frametitle{Cálculo de la Correlación en R}
+% Podemos calcular la correlación en R usando la función \texttt{cor()}.
+
+% \begin{verbatim}
+% # Datos
+% azucar <- c(30, 40, 50, 60, 70)
+% felicidad <- c(3, 4, 5, 6, 7)
+
+% # Calcular la correlación
+% correlacion <- cor(azucar, felicidad)
+% \end{verbatim}
+
+% Resultado: La correlación entre la cantidad de azúcar consumida y el nivel de felicidad es aproximadamente 1, lo que indica una fuerte relación lineal positiva.
+% \end{frame}
+
+
+\subsection{Ejemplo Práctico}
+\begin{frame}
+\frametitle{Ejemplo: Inversión en Publicidad vs Ventas}
+Supongamos que una empresa quiere analizar la relación entre la inversión en publicidad (en miles de dólares) y las ventas mensuales de un producto (en miles de unidades). Se recopilan los datos de los últimos 5 meses:
+
+\begin{itemize}
+    \item Inversión en publicidad: \( X = [10, 20, 30, 40, 50] \)
+    \item Ventas mensuales: \( Y = [50, 55, 65, 75, 90] \)
+\end{itemize}
+
+El objetivo es determinar si invertir más en publicidad está correlacionado con un aumento en las ventas.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Cálculo de la Correlación en R}
+Para evaluar esta relación, podemos calcular la correlación en R utilizando la función \texttt{cor()}.
+
+\begin{verbatim}
+# Datos
+inversion <- c(10, 20, 30, 40, 50)
+ventas <- c(50, 55, 65, 75, 90)
+
+# Calcular la correlación
+correlacion <- cor(inversion, ventas)
+\end{verbatim}
+
+\end{frame}
+
+
+\end{document}
