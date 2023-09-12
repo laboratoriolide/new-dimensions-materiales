@@ -1,0 +1,457 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+\usepackage{booktabs}
+
+\usetheme{Madrid}
+\usepackage{xcolor}
+\definecolor{myblue}{HTML}{427A92}
+\setbeamercolor{structure}{fg=myblue}
+\setbeamercolor{frametitle}{bg=myblue}
+\setbeamerfont{frametitle}{size=\huge}
+
+\title[2.1 Introducción a las Pruebas de Hipótesis]{\Huge 2.1 Introducción a las Pruebas de Hipótesis}
+\subtitle{2. Inferencia Estadística}
+\author{Christian E. Galarza}
+\date{\bf Programa New Dimensions}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{Introducción a las Pruebas de Hipótesis}
+
+\subsection{Pruebas de Hipótesis}
+
+
+
+\begin{frame}{Pruebas de hipótesis}
+
+{\bf Hipótesis:} Una declaración o premisa sobre el parámetro desconocido \( \theta \in \Theta \).
+
+\vfill
+
+    \begin{enumerate}
+        \item Hipótesis nula \( H_0 \): una declaración general o posición predeterminada.
+        \item Hipótesis alterna \( H_1 \): una declaración opuesta o alterna. También llamada {\em hipótesis de investigación}.
+    \end{enumerate}
+
+\vfill
+    
+    {\bf Contraste:}
+    
+    \[ H_0: \theta \in \Theta_0  \quad \text{vs.} \quad  H_1: \theta \in \Theta_1 \]
+
+     \[ H_0: \text{lo predeterminado, usualmente pesimista}  \quad \text{vs.} \quad  H_1: \text{lo que se quiere probar} \]
+\end{frame}
+
+
+
+
+
+\begin{frame}
+
+\frametitle{Contrastes hipótesis en la vida real}
+
+\begin{itemize}
+
+\item {\bf Pruebas de drogas:} Las compañías farmacéuticas utilizan contrastes hipótesis para probar la eficacia de nuevos medicamentos. Comparan el efecto del medicamento con un placebo, que es un tratamiento inactivo.
+
+\item {\bf Encuestas de opinión:} Los encuestadores utilizan contrastes hipótesis para medir la opinión pública sobre diversos temas. Comparan las respuestas de los encuestados con una hipótesis nula, que es la hipótesis de que no hay diferencia entre las opiniones de los encuestados.
+
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+
+\frametitle{Contrastes hipótesis en la vida real}
+
+\begin{itemize}
+
+\item {\bf Experimentos científicos:} Los científicos utilizan contrastes hipótesis para probar sus hipótesis sobre el mundo natural. Comparan los resultados de sus experimentos con las hipótesis nulas.
+
+\item {\bf Juegos de azar:} Las casas de apuestas utilizan contrastes hipótesis para determinar las probabilidades de ganar o perder en diferentes juegos. Comparan las probabilidades de ganar con una hipótesis nula, que es la hipótesis de que no hay diferencia entre las probabilidades de ganar y perder.
+
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}
+
+\frametitle{Contrastes hipótesis en la vida real}
+
+\begin{itemize}
+
+\item {\bf Pruebas de drogas:}
+
+\begin{itemize}
+\item Hipótesis nula (H0): El medicamento no tiene ningún efecto sobre la población de interés.
+\item Hipótesis alternativa (H1): El medicamento tiene algún efecto sobre la población de interés.
+\end{itemize}
+
+\item {\bf Encuestas de opinión:}
+
+\begin{itemize}
+\item Hipótesis nula (H0): No hay diferencia entre las opiniones de los encuestados.
+\item Hipótesis alternativa (H1): Hay alguna diferencia entre las opiniones de los encuestados.
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Contrastes hipótesis en la vida real}
+
+\begin{itemize}
+
+\item {\bf Experimentos científicos:}
+
+\begin{itemize}
+\item Hipótesis nula (H0): Los resultados del experimento son debidos al azar.
+\item Hipótesis alternativa (H1): Los resultados del experimento no son debidos al azar.
+\end{itemize}
+
+\item {\bf Juegos de azar:}
+
+\begin{itemize}
+\item Hipótesis nula (H0): Las probabilidades de ganar o perder son iguales.
+\item Hipótesis alternativa (H1): Las probabilidades de ganar o perder no son iguales.
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}{Tipos de hipótesis}
+    \begin{itemize}
+        \item Simple vs. Compuesta.
+        \item Una hipótesis es simple si supone un valor único, sino, es compuesta.
+        \item Existen hipótesis compuestas unilaterales y bilaterales.
+    \end{itemize}
+\end{frame}
+
+
+% Left tail, right tail, two tails
+\begin{frame}
+\frametitle{Colas en pruebas de hipótesis}
+Las pruebas de hipótesis pueden ser de una o dos colas, dependiendo de lo que estemos buscando:
+\begin{itemize}
+\item Prueba de cola izquierda: ¿Es nuestro valor menor que un cierto valor?
+\item Prueba de cola derecha: ¿Es nuestro valor mayor que un cierto valor?
+\item Prueba de dos colas: ¿Nuestro valor es diferente de un cierto valor?
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Ejemplo de colas}
+Si queremos probar si un medicamento reduce la presión arterial, usaríamos una prueba de una cola (izquierda). Si queremos probar si afecta (aumenta o disminuye) la presión arterial, usaríamos una prueba de dos colas.
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Ejemplo de colas}
+\begin{center}
+\includegraphics[width=0.7\linewidth]{Figuras/one-tailed-vs-two-tailed-test.jpg} % Imagen de una distribución con las colas marcadas.    
+\end{center}
+\end{frame}
+
+
+
+
+
+% Ejemplo 1: Texto
+\begin{frame}{Ejemplo 1: Lanzamiento de una moneda}
+    Generalmente se cree que cuando lanzamos una moneda, la probabilidad de que una moneda caiga cara arriba es \(0.5\). Una persona es escéptica y cree que una moneda en realidad tiende a resultar cara más de lo normal, cree él, con probabilidad \(0.7\).
+\end{frame}
+
+% Ejemplo 1: Traducción Matemática
+\begin{frame}{Ejemplo 1: Traducción Matemática}
+    \begin{itemize}
+        \item Hipótesis nula (teoría comúnmente aceptada): \( H_0: p = 0.5 \) (hipótesis simple).
+        \item Hipótesis alterna (hipótesis de investigación): \( H_1: p = 0.7 \) (hipótesis simple).
+    \end{itemize}
+\end{frame}
+
+% Ejemplo 2: Texto
+\begin{frame}{Ejemplo 2: Diámetro de sorbetes}
+    Una compañía había declarado que su máquina fabrica sorbetes con un diámetro promedio de 4 mm. Un trabajador cree que la máquina ya no produce sorbetes de este tamaño, en promedio.
+\end{frame}
+
+% Ejemplo 2: Traducción Matemática
+\begin{frame}{Ejemplo 2: Traducción Matemática}
+    \begin{itemize}
+        \item Hipótesis nula (actualmente aceptada): \( H_0: \mu = 4 \) (hipótesis simple).
+        \item Hipótesis alterna (hipótesis de investigación): \( H_1: \mu \neq 4 \) (hipótesis compuesta de dos colas).
+    \end{itemize}
+\end{frame}
+
+% Ejemplo 3: Texto
+\begin{frame}{Ejemplo 3: Duración del sueño en adolescentes}
+    Los médicos creen que el adolescente promedio duerme en media, no más de 10 horas por día. Una investigación cree que los adolescentes, en media, duermen más tiempo.
+\end{frame}
+
+% Ejemplo 3: Traducción Matemática
+\begin{frame}{Ejemplo 3: Traducción Matemática}
+    \begin{itemize}
+        \item Hipótesis nula (comúnmente aceptada): \( H_0: \mu \leq 10 \) (compuesta unilateral).
+        \item Hipótesis alterna (hipótesis de investigación): \( H_1: \mu > 10 \) (compuesta unilateral).
+    \end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}{Decisiones y errores}
+    \begin{itemize}
+        \item ¿Cuál de las hipótesis es más favorable según los datos?
+        \item {\bf Estadístico de prueba:} es una cantidad que depende de la muestra y permite tomar una decisión.
+        \item {\bf Región de rechazo:} nos indica cuando rechazar o no la hipótesis nula.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Tipos de errores}
+    \begin{table}
+        \centering
+        \begin{tabular}{|c|c|c|}
+            \hline
+            & \( H_0 \) es verdadera & \( H_1 \) es verdadera \\
+            \hline
+            Se rechaza \( H_0 \) & Error tipo I & Decisión correcta \\
+            \hline
+            No se rechaza \( H_0 \) & Decisión correcta & Error tipo II \\
+            \hline
+        \end{tabular}
+        \caption{Resultados de la decisión}
+    \end{table}
+\end{frame}
+
+\begin{frame}{Tipos de errores al tomar una decisión}
+    \begin{itemize}
+\item Error tipo I: Rechazar la hipótesis nula cuando es verdadera.
+\item Error tipo II: No rechazar la hipótesis nula cuando es falsa.
+    \end{itemize}
+
+\vfill
+{\bf Ejemplo:}
+    \begin{itemize}
+        \item Error tipo I (falso positivo): {\em encerrar al inocente.}
+        \item Error tipo II (falso negativo): {\em dejar libre al culpable.}
+    \end{itemize}
+
+    
+\end{frame}
+
+
+
+
+
+
+% Statistical significance
+\begin{frame}
+\frametitle{Significancia estadística}
+La significancia estadística nos dice si un resultado es probable que sea real o si podría haber ocurrido por casualidad. Es una forma de cuantificar la confianza en nuestros resultados.
+
+\vfill
+
+{\bf Ejemplo:} Se desea probar si la última estrategia del mercado ha ayudado a incrementar las ventas de un nuevo producto. Se ha calculado el número de productos vendidos antes y después de la estrategia y se ha encontrado de que efectivamente ha aumentado la venta en cuatro unidades. {\bf ¿Ha servido o no la campaña?}
+
+
+\end{frame}
+
+
+
+
+
+
+% p-values
+\begin{frame}
+\frametitle{Valor $p$ ($p$-value)}
+El valor $p$ es una herramienta esencial en pruebas de hipótesis. Nos dice la probabilidad de obtener un resultado tan extremo como el observado, asumiendo que la hipótesis nula es verdadera.
+\end{frame}
+
+
+% Segunda diapositiva: Tabla del valor p
+\begin{frame}{Decisiones basadas en el valor \( p \)}
+    \begin{table}
+        \centering
+        \begin{tabular}{@{}ccc@{}}
+            \toprule
+            Valor \( p \) & Evidencia contra \( H_0 \) & Conclusión \\
+            \midrule
+            \( < 0.01 \) & evidencia muy fuerte & Se rechaza \( H_0 \) \\
+            0.01-0.05 & evidencia fuerte & Se rechaza \( H_0 \) \\
+            0.05-0.10 & evidencia débil & \( \cdots \) \\
+            \( > 0.1 \) & poca o ninguna evidencia & No se rechaza \( H_0 \) \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+
+
+% Calculating confidence intervals
+\begin{frame}
+\frametitle{Cálculo de intervalos de confianza}
+El intervalo de confianza nos da un rango en el que es probable que se encuentre un parámetro poblacional. Nos da una idea de la incertidumbre asociada con nuestras estimaciones.
+
+\vfill
+
+Es mucho más útil para la toma de decisiones ya que en lugar de dar un solo punto (estimación puntual), nos provee un intervalo dado un grado de error (nivel de significancia) $\alpha$.
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Fórmula del intervalo de confianza para la media}
+Un intervalo de confianza del $(1-\alpha)\%$ de confianza está dado por:
+\[ \text{IC}(\mu) =  \bar{x} \pm Z_{\alpha/2} \frac{\sigma}{\sqrt{n}}, \]
+donde \( \bar{x} \) es la media muestral, \( z \) es el valor crítico de una normal (el cual dependerá del nivel  de confianza), \( \sigma \) es la desviación estándar poblacional y \( n \) es el tamaño de la muestra.
+
+\vfill
+
+Como en la vida real difícilmente conocemos la varianza de la población $\sigma^2$, se usa su estimador muestral $s^2$. La fórmula ahora será:
+\[ \text{IC}(\mu) =  \bar{x} \pm t_{n-1,\alpha/2} \frac{s}{\sqrt{n}}, \]
+
+donde $t_{n-1,\alpha/2}$ es e valor crítico tomado de una distribución $t$ de Student.
+
+%\includegraphics[width=0.7\linewidth]{confidence_interval.png} % Imagen de una distribución con el intervalo de confianza marcado.
+\end{frame}
+
+
+
+% % Calculating confidence intervals for proportions
+% \begin{frame}
+% \frametitle{Cálculo de intervalos de confianza para proporciones}
+% El intervalo de confianza para proporciones nos da un rango en el que es probable que se encuentre una proporción poblacional. Al igual que con las medias, nos proporciona una idea de la incertidumbre asociada con nuestras estimaciones de proporciones.
+
+% \vfill
+
+% Es exactamente lo que se levanta en casos electorales cuando queremos estimar la proporción de intención de voto para un determinado candidato. {\bf ¿Han escuchado antes de que se dice ``con un 95\% de confianza''?}
+
+% \end{frame}
+
+% \begin{frame}
+% \frametitle{Fórmula del intervalo de confianza para proporciones}
+% Un intervalo de confianza del \( (1-\alpha)\% \) de confianza para una proporción \( p \) está dado por:
+% \[ \text{IC}(p) =  \hat{p} \pm Z_{\alpha/2} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}, \]
+% donde \( \hat{p} \) es la proporción muestral y \( Z_{\alpha/2} \) es el valor crítico de una distribución normal (el cual dependerá del nivel de confianza).
+
+% \vfill
+
+% {\bf El intervalo de confianza arriba funciona para tamaño demuestra grandes ($n>30$). Esto es porque el mismo sigue del teorema de límite central.}
+
+
+% %\includegraphics[width=0.7\linewidth]{confidence_interval_proportions.png} % Imagen de una distribución con el intervalo de confianza marcado.
+% \end{frame}
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Z-scores*}
+El z-score es una medida que describe la posición de un valor individual en relación con la media de un conjunto de datos. 
+\[ z = \frac{x - \mu}{\sigma} \]
+donde \( x \) es el valor observado, \( \mu \) es la media y \( \sigma \) es la desviación estándar.
+
+\vfill
+
+El z-score nos ayuda a entender cuán inusual o típico es un valor en relación con el conjunto de datos. Es esencial para muchas pruebas estadísticas.
+
+
+%\includegraphics[width=0.7\linewidth]{zscore_distribution.png} % Imagen de una distribución normal con z-scores marcados.
+\end{frame}
+
+% Uses of A/B testing
+\begin{frame}
+\frametitle{Usos de las pruebas A/B*}
+Las pruebas A/B son experimentos controlados que comparan dos (o más) versiones de una variable para determinar cuál es más efectiva. Es una forma práctica de probar hipótesis en situaciones del mundo real.
+
+\vfill
+
+{\bf Ejemplo:} una empresa podría usar pruebas A/B para determinar qué diseño de sitio web genera más clicks. Al mostrar aleatoriamente a los visitantes uno de los dos diseños y luego analizar cuál tuvo un mejor rendimiento, la empresa puede tomar decisiones informadas sobre qué diseño implementar.
+%\includegraphics[width=0.7\linewidth]{ab_testing_example.png} % Imagen de dos versiones de un sitio web.
+\end{frame}
+
+
+
+
+% Aquí puedes continuar con el ejemplo práctico y el código en R como en el código anterior.
+
+\subsection{Ejemplo Práctico}
+\begin{frame}
+\frametitle{Ejemplo: Prueba de Hipótesis para la Media}
+Supongamos que queremos probar si la media de una población es igual a 50. Tenemos una muestra de tamaño 100 con una media de 52 y una desviación estándar de 10.
+
+Hipótesis:
+\[
+\begin{align*}
+H_0: & \ \mu = 50 \\
+H_a: & \ \mu \neq 50
+\end{align*}
+\]
+
+Realizaremos una prueba de dos colas con un nivel de significancia de 0.05.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Cálculo de la Prueba de Hipótesis en R}
+Podemos realizar la prueba de hipótesis en R usando las funciones \texttt{z.test()} y \texttt{pnorm()}.
+
+\begin{verbatim}
+# Parámetros
+mu <- 50  # Media bajo H0
+x_bar <- 52 # Media muestral
+sigma <- 10 # Desviación estándar
+n <- 100  # Tamaño de la muestra
+alpha <- 0.05 # Nivel de significancia
+
+# Calcular el z-score
+z_score <- (x_bar - mu) / (sigma / sqrt(n))
+
+# Calcular el p-valor
+p_valor <- 2 * (1 - pnorm(abs(z_score)))
+
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Cálculo Directo de la Prueba de Hipótesis en R}
+Podemos realizar la prueba de hipótesis directamente en R usando la función \texttt{z.test()} del paquete `BSDA`.
+
+\begin{verbatim}
+library(BSDA)
+mu <- 50  # Media bajo H0
+x_bar <- 52 # Media muestral
+sigma <- 10 # Desviación estándar
+n <- 100  # Tamaño de la muestra
+alpha <- 0.05 # Nivel de significancia
+
+# Realizar el z-test
+test <- z.test(x = x_bar, alternative = "two.sided", 
+               mu = mu, sigma.x = sigma, conf.level = 1-alpha)
+\end{verbatim}
+
+El resultado mostrará el valor de z y el p-valor, entre otros detalles.
+\end{frame}
+
+
+\end{document}

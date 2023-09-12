@@ -1,0 +1,500 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+
+\usetheme{Madrid}
+\usepackage{xcolor}
+\definecolor{myblue}{HTML}{427A92}
+\setbeamercolor{structure}{fg=myblue}
+\setbeamercolor{frametitle}{bg=myblue}
+\setbeamerfont{frametitle}{size=\huge}
+
+\title[1.2. Probabilidad]{\Huge 1.2. Probabilidad}
+\subtitle{1. Estadística y Probabilidad Básica}
+\author{Christian E. Galarza}
+\date{\bf Programa New Dimensions}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{Probabilidad}
+
+\subsection{Métodos de Conteo}
+\begin{frame}
+\frametitle{Métodos de Conteo}
+En matemáticas, existen varias técnicas que nos ayudan a contar o listar posibles resultados de un experimento. Algunos de los métodos de conteo más comunes incluyen:
+
+\begin{itemize}
+\item Regla multiplicativa
+\item Combinatoria
+\item Permutaciones
+\end{itemize}
+
+Comenzaremos con la regla multiplicativa.
+\end{frame}
+
+\begin{frame}
+\frametitle{Regla Multiplicativa}
+La regla multiplicativa establece que si un evento puede ocurrir de \(m\) formas y un segundo evento puede ocurrir de \(n\) formas, entonces los dos eventos pueden ocurrir de \(m \times n\) formas.
+
+\vfill
+
+\textbf{Ejemplo:} Supón que tienes una camiseta que viene en 3 colores diferentes (rojo, verde, azul) y 2 tallas diferentes (pequeño, grande). Según la regla multiplicativa, hay \(3 \times 2 = 6\) combinaciones posibles de color y talla para esta camiseta.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Ejemplo}
+Queremos contar cuántos números de cinco dígitos comienzan con 5 y terminan con un número par. Para esto:
+
+\begin{itemize}
+\item Para el primer dígito, solo hay una opción: 5.
+\item Para los dígitos en las posiciones del segundo al cuarto, hay 10 opciones para cada uno (los números del 0 al 9).
+\item Para el último dígito, necesitamos un número par, por lo que nuestras opciones son 0, 2, 4, 6, 8.
+\end{itemize}
+
+Usando la regla multiplicativa:
+\[1 \times 10 \times 10 \times 10 \times 5 = 5000\]
+
+Por lo tanto, existen 5000 números de cinco dígitos que comienzan con 5 y terminan con un número par.
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Ejemplo: Contando Anagramas}
+Un anagrama es una palabra o frase que se forma reorganizando las letras de otra palabra o frase. Por ejemplo, los anagramas de la palabra ``ABC'' son: ``ABC'', ``ACB'', ``BAC'', ``BCA'', ``CAB'' y ``CBA''.
+
+\vfill
+
+Usando la regla multiplicativa, podemos calcular el número de anagramas de una palabra. Para una palabra de \(n\) letras únicas, el número de anagramas es \(n!\).
+
+\vfill
+
+Por ejemplo, la palabra `` ABC'' tiene 3 letras únicas, por lo que tiene \(3! = 3 \times 2 \times 1 = 6\) anagramas. {\bf ¿Qué sucederá con la palabra `` MISSISSIPPI''?}
+
+\end{frame}
+
+
+
+\subsection{Combinatoria}
+\begin{frame}
+\frametitle{Combinatoria}
+Imagina que tienes 3 amigos: Ana, Juan y Carlos. Quieres invitar a 2 de ellos a ver una película. ¿Cuántas combinaciones posibles de amigos puedes invitar?
+
+\begin{itemize}
+\item Ana y Juan
+\item Ana y Carlos
+\item Juan y Carlos
+\end{itemize}
+
+\bigskip
+
+Como puedes ver, hay 3 formas posibles de escoger 2 amigos de un grupo de 3. {\bf ¿Y si tuviese que escoger 4 amigos entre 20 para irnos de viaje?}
+\end{frame}
+
+\begin{frame}
+\frametitle{Combinatoria}
+En matemáticas, esto se llama una "combinación", que es una forma de contar cómo se pueden seleccionar elementos de un conjunto sin tener en cuenta el orden. Se denota y calcula como sigue:
+
+\[
+\binom{n}{k} = \frac{n!}{k!(n-k)!}
+\]
+
+Donde:
+\begin{itemize}
+\item \(n\) es el número total de elementos en el conjunto.
+\item \(k\) es el número de elementos que queremos seleccionar.
+\item \(!\) indica factorial, que es el producto de todos los números enteros positivos desde 1 hasta ese número.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Ejemplo: Seleccionando amigos}
+Siguiendo con nuestro ejemplo anterior, si tenemos 3 amigos y queremos seleccionar 2 para un viaje, podemos usar la combinatoria para encontrar el número de formas posibles de hacerlo.
+
+Reemplazamos los valores en la fórmula de la combinatoria:
+\[
+\binom{3}{2} = \frac{3!}{2!(3-2)!} = 3
+\]
+Por lo tanto, hay 3 formas posibles de seleccionar 2 amigos de un grupo de 3.
+
+\vfill
+
+Ahora, supongamos que tenemos 20 amigos y queremos seleccionar 4 para un viaje. Usando la misma fórmula:
+\[
+\binom{20}{4} = \frac{20!}{4!(20-4)!} = 4845
+\]
+Por lo tanto, {\bf hay 4845 formas posibles} de seleccionar 4 amigos de un grupo de 20.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Ejemplo: El Pozo Millonario}
+En este juego, se seleccionan 15 bolitas de un total de 25 en un ánfora. La pregunta es: ¿Cuántas combinaciones diferentes son posibles?
+
+\vfill
+
+Podemos usar la combinatoria para encontrar la respuesta:
+\[
+\binom{25}{15} = \frac{25!}{15!(25-15)!} = 3,268,760
+\]
+
+\vfill
+
+Por lo tanto, hay 3,268,760 combinaciones posibles en El Pozo Millonario. Esto significa que si compras un boleto, tienes {\bf 1 entre 3,268,760} posibilidades de ganar (suponiendo que todas las combinaciones sean igualmente probables).
+\end{frame}
+
+
+
+\subsection{Introducción}
+\begin{frame}
+\frametitle{¿Qué son las probabilidades?}
+La probabilidad es una medida de la certeza de un evento. Se expresa como un número entre 0 y 1, donde 0 significa que el evento es imposible y 1 significa que el evento es seguro.
+\[
+P(A) = \frac{\text{Número de casos favorables}}{\text{Número de casos posibles}}
+\]
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Ejemplos}
+
+\begin{block}{Ejemplo 1: Lanzamiento de un dado}
+Al lanzar un dado justo de seis caras, la probabilidad de obtener un número impar (1, 3 o 5) es
+\[
+P(\text{Número impar}) = \frac{\text{Número de casos favorables}}{\text{Número de casos posibles}} = \frac{3}{6} = 0.5
+\]
+\end{block}
+
+\end{frame}
+
+
+
+
+
+
+\subsection{Ejemplos de Cálculos de Probabilidad}
+\begin{frame}
+\frametitle{Ejemplos}
+
+
+\begin{block}{Ejemplo 2: Extracción de una carta}
+Al extraer una carta de una baraja estándar de 52 cartas, la probabilidad de obtener una carta de corazones es
+\[
+P(\text{Corazones}) = \frac{\text{Número de casos favorables}}{\text{Número de casos posibles}} = \frac{13}{52} = 0.25
+\]
+\end{block}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Ejemplos}
+
+\begin{block}{Ejemplo 3: Extracción de 5 cartas}
+Deseamos calcular la probabilidad de obtener una mano con 2 Ases y 3 Reyes de una baraja de 52 cartas.
+
+\begin{itemize}
+    \item Formas de seleccionar 2 Ases de 4: \(\binom{4}{2} = 6\)
+    \item Formas de seleccionar 3 Reyes de 4: \(\binom{4}{3} = 4\)
+    \item Total de formas para 2 Ases y 3 Reyes: \(6 \times 4 = 24\)
+    \item Formas totales para seleccionar 5 cartas de 52: \(\binom{52}{5} = 2,598,960\)
+    \item Probabilidad de obtener 2 Ases y 3 Reyes: \(\frac{24}{2,598,960} \approx 0.00000923\) (alrededor de 1 en 108,290)
+\end{itemize}
+
+\end{block}
+\end{frame}
+
+
+
+\subsection{Conceptos Básicos}
+\begin{frame}
+\frametitle{¿Con o sin reemplazo?}
+La probabilidad puede cambiar si los eventos son con o sin reemplazo. Con reemplazo significa que un objeto se devuelve al conjunto después de ser seleccionado, mientras que sin reemplazo significa que no se devuelve.
+
+\vfill
+
+Por ejemplo, en la extracción de una carta de una baraja de 52 cartas, si lo haces con reemplazo, las probabilidades no cambian para la segunda extracción. Si lo haces sin reemplazo, las probabilidades sí cambian.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Ejemplos}
+\begin{block}{Jugando con canicas}
+Tenemos una bolsa con 2 canicas azules y 2 canicas rojas.
+
+\begin{itemize}
+    \item ¿Cuál es la probabilidad de sacar una canica azul?
+    \item Después de tomar una canica, las probabilidades cambiarán para la segunda extracción. Consideremos los siguientes casos:
+    \begin{itemize}
+        \item Si sacamos una canica roja primero, la probabilidad de sacar una canica azul en el siguiente intento es ahora 2 de 3.
+        \item Si sacamos una canica azul primero, la probabilidad de sacar otra canica azul es ahora 1 de 3.
+    \end{itemize}
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Cálculo de probabilidades}
+La probabilidad se puede calcular utilizando la regla de la aditiva y la regla del producto, dependiendo de si los eventos son mutuamente excluyentes (no pueden suceder al mismo tiempo) o independientes.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Distribuciones de Probabilidad}
+
+Las distribuciones de probabilidad se dividen en dos categorías:
+
+\begin{itemize}
+    \item Distribuciones discretas: se utilizan cuando las variables pueden tomar un número contable de valores.
+    \item Distribuciones continuas: se aplican cuando las variables pueden tomar un número infinito de valores en un intervalo.
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Distribuciones Discretas}
+
+Algunas distribuciones discretas notables incluyen:
+
+\begin{itemize}
+    \item Distribución Binomial
+    \item Distribución de Poisson
+    \item Distribución Geométrica
+    \item Distribución Hipergeométrica
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Distribuciones Continuas}
+
+Algunas distribuciones continuas destacadas son:
+
+\begin{itemize}
+    \item Distribución Normal
+    \item Distribución Exponencial
+    \item Distribución Uniforme
+    \item Distribución de F de Fisher
+\end{itemize}
+
+\end{frame}
+
+
+% \begin{frame}
+% \frametitle{Distribución Normal}
+
+% \begin{figure}[h]
+% \centering
+% \includegraphics[width=0.8\textwidth]{ruta/distribucion_normal.png}
+% \caption{Gráfica de una distribución normal}
+% \end{figure}
+
+% \end{frame}
+
+
+
+\subsection{Distribuciones Discretas}
+\begin{frame}
+\frametitle{Distribuciones discretas}
+Una distribución discreta describe la probabilidad de resultados discretos, como al lanzar un dado. La suma de las probabilidades (las cuales se encuentran entre 0 y 1) en una distribución discreta siempre es igual a 1.
+
+
+\vfill
+
+\begin{block}{Observación}
+La distribución de probabilidades para una variable aleatoria discreta puede ser representada por {\bf a)} una fórmula {\bf b)} una tabla {\bf c)} un gráfico.
+\end{block}
+
+\end{frame}
+
+
+
+% \begin{frame}
+% \frametitle{Función de Probabilidades}
+% \begin{block}{Definición}
+% La función de probabilidades (o más conocida como distribución de probabilidades) se define como:
+% \begin{equation*}
+% \mathbb{P}(X=x_i),\quad i=1,2,\ldots.
+% \end{equation*}
+% La cual satisface las condiciones:
+% \begin{itemize}
+% 	\item[$(i)$] $\mathbb{P}(X=x_i) \geq 0$
+% 	\item[$(ii)$] $\displaystyle \sum^{\infty}_{i=1} \mathbb{P}(X=x_i)=1$
+% \end{itemize}
+% \end{block}
+
+% \begin{block}{Observación}
+% La distribución de probabilidades para una variable aleatoria discreta puede ser representada por {\bf a)} una fórmula {\bf b)} una tabla {\bf c)} un gráfico.
+% \end{block}
+% \end{frame}
+
+
+\begin{frame}
+\frametitle{Valor Esperado vs. Media Muestral}
+\begin{block}{Definición}
+El valor esperado es lo que se conoce como la media de una variable aleatoria. Es lo real aquello a lo que nos queremos acercar a través de la media muestral.
+
+\[
+E[X] = \sum x_i \cdot P(X = x_i)
+\]
+\end{block}
+
+\begin{block}{Preguntas para Reflexionar}
+\begin{itemize}
+    \item ¿Será la media muestral igual a la media poblacional?
+    \item ¿Bajo qué condiciones serán iguales?
+    \item ¿Cómo afecta el tamaño de la muestra a la media muestral?
+    \item ¿Cómo cambia la media muestral a medida que obtenemos más datos?
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Simulación de lanzamiento de monedas}
+
+En una simulación de lanzamiento de monedas, lanzamos una moneda 10 veces y 100 veces, respectivamente. Los resultados se presentan a continuación:
+
+\begin{itemize}
+    \item Para 10 lanzamientos, obtenemos la secuencia: [1, 0, 0, 1, 1, 0, 0, 0, 0, 1]. Aquí, 1 representa ``Cara'' y 0 ``Sello''. La media de esta secuencia es $\frac{4}{10} = 0.4$.
+
+    \item Para 100 lanzamientos, calculamos la media aritmética y obtenemos 0.53.
+\end{itemize}
+
+\vfill
+
+\begin{block}{Pregunta}
+¿Qué podemos observar a medida que aumentamos el número de lanzamientos?
+\end{block}
+\end{frame}
+
+
+
+
+
+\subsection{Distribuciones Continuas}
+\begin{frame}
+\frametitle{Distribuciones continuas}
+Una distribución continua describe la probabilidad de que ocurran resultados cuyo valor se encuentra dentro de un intervalo posible de valores, como la altura de las personas.\\~\\
+
+
+Usualmente la reconocemos porque sus valores pueden tomar cantidades decimales.
+
+\vfill
+
+La probabilidad de un valor exacto en una distribución continua es cero. {\bf ¿Por qué?}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Identificando y Aplicando Distribuciones}
+Las distribuciones se pueden identificar por su forma y propiedades. Veamos algunos ejemplos de uso en la vida real:
+
+\begin{itemize}
+    \item \textbf{Distribución binomial:} Se usa en calidad y control de producción para analizar resultados de pruebas 'pasa/no pasa'. Por ejemplo, probar la funcionalidad de un lote de componentes electrónicos.
+    \item \textbf{Distribución geométrica:} Aplicada en modelado de escenarios donde se espera un 'primer éxito'. Por ejemplo, la cantidad de veces que un dado debe ser lanzado hasta que aparezca un '6'.
+    \item \textbf{Distribución de Poisson:} Utilizada para modelar el número de veces que un evento ocurrió en un intervalo de tiempo o espacio. Ejemplo: número de llamadas recibidas en un centro de llamadas en una hora determinada.
+\end{itemize}
+\end{frame}
+
+
+\subsection{Distribución Binomial}
+\begin{frame}
+\frametitle{La distribución binomial}
+La distribución binomial describe el número de éxitos en una serie de pruebas independientes de sí o no (Bernoulli). Se caracteriza por la probabilidad de éxito \(p\) y el número de pruebas \(n\).
+\[
+P(X=k) = \binom{n}{k} \cdot p^k \cdot (1-p)^{n-k}
+\]
+
+\vfill
+
+La probabilidad binomial se calcula utilizando la fórmula del coeficiente binomial, que es la cantidad de formas en las que podemos obtener exactamente \(k\) éxitos en \(n\) pruebas.
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}
+\frametitle{La distribución binomial}
+\centering
+\href{http://www.malinc.se/math/statistics/binomialen.php}{¡Haz clic aquí para jugar!}
+\end{frame}
+
+
+
+\subsection{Ejemplo Práctico}
+\begin{frame}
+\frametitle{Ejemplo: Lanzamiento de una Moneda}
+Supongamos que lanzamos una moneda justa 3 veces. Queremos encontrar la probabilidad de obtener exactamente 2 caras.
+
+Usando la distribución binomial:
+\[
+P(X=2) = \binom{3}{2} \left(\frac{1}{2}\right)^2 \left(1-\frac{1}{2}\right)^{3-2} = \frac{3}{8}
+\]
+\end{frame}
+
+% Puedes continuar con la sección de códigos en R
+
+
+
+\begin{frame}[fragile]
+\frametitle{Cálculo de la Probabilidad Binomial en R}
+Para calcular la probabilidad de obtener exactamente 2 caras en 3 lanzamientos de una moneda justa en R, podemos usar la función \texttt{dbinom()}.
+
+\begin{verbatim}
+# Parámetros
+n <- 3  # Número de ensayos
+k <- 2  # Número de éxitos deseados
+p <- 0.5 # Probabilidad de éxito en un ensayo
+
+# Calcular la probabilidad binomial
+probabilidad <- dbinom(k, n, p)
+\end{verbatim}
+
+Resultado: La probabilidad de obtener exactamente 2 caras en 3 lanzamientos es \(\frac{3}{8}\) o aproximadamente 0.375.
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Ejemplo: Experimento con medicamentos}
+\begin{block}{}
+Un laboratorio afirma que una droga causa efectos secundarios en una proporción de 3 de cada 100 pacientes. Para contrastar esta afirmación, otro laboratorio elige al azar a 5 pacientes a los que aplica la droga.
+
+Nos preguntamos:
+\begin{itemize}
+    \item[a)] ¿Cuál es la probabilidad de que ningún paciente tenga efectos secundarios?
+    \item[b)] ¿Cuál es la probabilidad de que al menos dos tengan efectos secundarios?
+    \item[c)] Si el laboratorio elige 100 pacientes al azar, ¿cuál es el número medio de pacientes que espera que sufran efectos secundarios?
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+
+
+\end{document}

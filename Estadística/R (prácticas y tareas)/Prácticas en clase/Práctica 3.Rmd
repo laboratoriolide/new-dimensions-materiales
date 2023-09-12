@@ -1,0 +1,194 @@
+---
+title: "Análisis de Supervivencia en el Titanic con Regresión Logística"
+output: html_document
+---
+
+## Introducción
+
+En esta práctica, realizaremos un análisis descriptivo y aplicaremos un modelo de regresión logística para predecir la supervivencia de los pasajeros del Titanic.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggplot2)
+library(rlang)
+```
+
+# Carga de Datos
+
+Cargamos el conjunto de datos del Titanic.
+
+```{r data load, include=FALSE}
+library(readr)
+data <- read_csv("titanic.csv")
+```
+
+# Análisis Descriptivo e Inferencial
+
+Realizamos un análisis descriptivo gráfico para identificar visualmente las variables potencialmente relevantes.
+
+### Tarifa vs Supervivencia
+
+```{r}
+ggplot(data, aes(x = Fare, fill = factor(Survived))) + 
+  geom_histogram(binwidth = 10, alpha = 0.7) +
+  ggtitle('Tarifa vs Supervivencia') +
+  xlab('Tarifa') +
+  ylab('Frecuencia') +
+  scale_fill_discrete(name = "Supervivencia", labels = c("No", "Sí"))
+```
+
+```{r}
+ggplot(data, aes(x = factor(Survived), y = Fare, fill = factor(Survived))) + 
+  geom_boxplot(alpha = 0.7) +
+  ggtitle('Tarifa vs Supervivencia') +
+  xlab('Supervivencia') +
+  ylab('Tarifa') +
+  scale_x_discrete(labels = c("No", "Sí")) +
+  scale_fill_discrete(name = "Supervivencia", labels = c("No", "Sí"))
+```
+
+Una prueba t nos conduce a que  existe una diferencia significativa en las tarifas medias pagadas por los individuos que sobrevivieron y los que no. El valor de t es -6.8391 y el p-valor es practicamente 0, lo que indica que la diferencia es altamente significativa estadísticamente. En promedio, los individuos que sobrevivieron pagaron una tarifa más alta (\$48.40) en comparación con los que no sobrevivieron (\$22.12).
+
+```{r}
+# Prueba t para comparar las medias de las tarifas entre los que sobrevivieron y los que no
+t_test_result <- t.test(Fare ~ Survived, data = data)
+t_test_result
+```
+### Género vs. superviviencia
+
+¿Será que el género fue significativo?
+
+```{r}
+data %>% names
+data <- data %>%
+  mutate(Survived = factor(Survived,labels = c("No","Yes")),
+         Sex = factor(Sex,labels = c("Female","Male")),
+         Pclass = factor(Pclass),
+         Child = as.factor(ifelse(Age <= 12,"Yes","No")))
+```
+
+```{r}
+attach(data)
+tabla_sex <- table(Survived,Sex)
+resultado_sex <- chisq.test(tabla_sex) # el género no fue independiente de la tasa de supervivencia
+resultado_sex
+addmargins(tabla_sex)
+```
+
+### Niños vs. superviviencia
+
+```{r}
+attach(data)
+tabla_child <- table(Survived,Child)
+resultado_child <- chisq.test(tabla_child) # Los niños sin duda alguna tuvieron más chance de sobrevivir.
+resultado_child
+addmargins(tabla_child)
+```
+
+```{r}
+data %>% 
+  dplyr::select(Child,Survived) %>%
+  filter(complete.cases(.)) %>%
+  ggplot(aes(x = Child, fill = Survived)) + 
+  geom_bar(position = "dodge") +
+  ggtitle('Relación entre Ser Niño y la Tasa de Supervivencia') +
+  xlab('Es Niño') +
+  ylab('Frecuencia') +
+  scale_fill_discrete(name = "Supervivencia", labels = c("No", "Sí")) +
+  theme_minimal()
+
+```
+
+Faltan unos grafiquitos y conclusiones :)
+
+# Modelo Logístico Completo
+
+Aplicamos un modelo de regresión logística utilizando todas las variables disponibles.
+
+```{r}
+#complete_model <- glm(Survived ~ ., data = data, family = binomial)
+#summary(complete_model)
+```
+
+```{r}
+complete_model <- glm(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Child + Embarked, data = data, family = binomial)
+summary(complete_model)
+```
+
+# Modelo Logístico Reducido
+
+Identificamos y eliminamos variables no significativas para desarrollar un modelo reducido.
+
+???
+
+# Step AIC
+
+```{r}
+library(MASS)
+data2 <- data %>% 
+  dplyr::select(Survived,Pclass,Sex,Age,SibSp,Parch,Fare,Child,Embarked) %>% 
+  filter(complete.cases(.))
+complete_model2 <- glm(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Child + Embarked, data = data2, family = binomial)
+best_model <- stepAIC(complete_model2)
+summary(best_model)
+```
+
+# Interpretación de Parámetros
+
+Los coeficientes del modelo logístico indican cómo cada variable afecta la log-odds de sobrevivir, manteniendo constantes las otras variables. Aquí hay dos interpretaciones:
+
+- **`Sexo (SexMale)`:** El coeficiente negativo de -2.675 indica que ser hombre disminuye significativamente la probabilidad de sobrevivir en comparación con ser mujer. Específicamente, la chance de superviviencia se reducirá a un `r round(exp(-2.675)*100,1)`%.   
+
+- **Clase del Pasajero (`Pclass`)**: Los coeficientes negativos para Pclass2 (-1.362) y Pclass3 (-2.583) sugieren que los pasajeros de segunda y tercera clase tienen una probabilidad significativamente menor de sobrevivir en comparación con los de primera clase.
+
+- **Niño (`ChildYes`)**: El coeficiente positivo de 1.402 indica que ser un niño (edad ≤ 12 años) aumenta significativamente la probabilidad de sobrevivir en comparación con no ser un niño.
+
+# Predicción
+
+Hagamos predicciones para dos individuos con características específicas. Creamos para esto un `data.frame` con dos individuos (una mujer de 25 años que viajó en primera clase sin hermanos/cónyuges a bordo y un hombre de 30 años en tercera clase con un hermano/cónyuge a bordo) y predeciremos sus probabilidades de supervivencia utilizando el modelo logístico.
+
+```{r}
+# Creando un data frame con las características de dos individuos
+new_data <- data.frame(
+  Pclass = factor(c(1, 3), levels = levels(data$Pclass)),
+  Sex = factor(c("Female", "Male"), levels = levels(data$Sex)),
+  Age = c(25, 30),
+  SibSp = c(0, 1),
+  Child = factor(c("No", "No"), levels = levels(data$Child))
+)
+
+# Haciendo predicciones con el modelo reducido
+predictions <- predict(best_model, new_data, type = "response")
+predictions
+```
+
+Clasificamos si la persona, sobrevivió o no.
+```{r}
+ifelse(predictions > 0.5,":D",":(")
+```
+
+Vamos a probar el poder predictivo de nuestro modelo con 20 pasajeros al azar.
+
+```{r}
+#random_data <- data2 %>% sample_frac(0.10) # 10% de la data
+random_data <- data2 %>% sample_n(20) # 20 pasajeros
+
+predicciones <- predict(best_model,random_data,
+                         type = "response")
+#carita <- ifelse(predicciones > 0.5,":D",":(")
+carita <- ifelse(predicciones > 0.5,"Yes","No")
+
+pred <- data.frame(real = random_data$Survived,
+prediccion = predicciones, situacion = carita)
+
+pred
+
+table(pred$real,pred$situacion)
+```
+
+Por lo tanto la precisión del modelo (en este pequeño conjunto de prueba) es de un `r round(17/20,1)*100`%.
+
+# Conclusiones
+
+A la luz de los números, *¿podemos decir que las cosas sucedieron como en la película?*

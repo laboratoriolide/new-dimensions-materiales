@@ -1,0 +1,246 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+\usepackage{tikz}
+
+\usetheme{Madrid}
+\usepackage{xcolor}
+\definecolor{myblue}{HTML}{427A92}
+\setbeamercolor{structure}{fg=myblue}
+\setbeamercolor{frametitle}{bg=myblue}
+\setbeamerfont{frametitle}{size=\huge}
+
+\title[1.3. Distribuciones y el TLC]{\Huge 1.3. Distribuciones y el TLC}
+\subtitle{1. Estadística y Probabilidad Básica}
+\author{Christian E. Galarza}
+\date{\bf Programa New Dimensions}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{Distribuciones y el Teorema del Límite Central}
+
+\subsection{La Distribución Normal}
+\begin{frame}
+\frametitle{La Distribución Normal}
+\begin{itemize}
+    \item Es una de las distribuciones más importantes en estadística.
+    \item Es simétrica y tiene forma de campana.
+    \item Se describe completamente por su media \(\mu\) y desviación estándar \(\sigma\).
+    \item La notación: \(X \sim N(\mu, \sigma^2)\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Definición Matemática de la Distribución Normal}
+La función de densidad de probabilidad (PDF) de la distribución normal es:
+\[
+f(x | \mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{ -\frac{(x-\mu)^2}{2\sigma^2} }
+\]
+donde \(\mu\) es la media y \(\sigma^2\) es la varianza.
+\end{frame}
+
+\begin{frame}[fragile]
+
+\begin{center}
+\includegraphics[width=0.7\textwidth]{Figuras/normal_pdf.pdf}
+\end{center}
+
+\end{frame}
+
+
+% https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.simplypsychology.org%2Fnormal-distribution.html&psig=AOvVaw1HXJWY-ks1soH3mhgxkBP8&ust=1690847953863000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOjiw7jRt4ADFQAAAAAdAAAAABAJ
+
+\begin{frame}
+\frametitle{Probabilidades de la Distribución Normal}
+\begin{itemize}
+    \item Se pueden calcular probabilidades usando la tabla Z o funciones en R.
+    \item Ejemplo: La probabilidad de que \(X < x\) si \(X \sim N(\mu, \sigma^2)\) se calcula con la función \texttt{pnorm} en R.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Estandarización de una Variable Aleatoria Normal}
+
+La estandarización implica transformar una variable aleatoria \( X \) con media \( \mu \) y desviación estándar \( \sigma \) a una variable \( Z \) con media 0 y desviación estándar 1.
+
+\[
+Z = \frac{X - \mu}{\sigma}
+\]
+
+\begin{itemize}
+    \item \( Z \) es una variable aleatoria normal estándar.
+    \item Estandarizar permite comparar diferentes variables aleatorias normales.
+    \item Las probabilidades de \( Z \) se pueden encontrar usando tablas estándar de la distribución normal.
+\end{itemize}
+\end{frame}
+
+
+
+
+
+\subsection{La Distribución de Poisson}
+\begin{frame}
+\frametitle{Definición Matemática de la Distribución de Poisson}
+La función de masa de probabilidad (PMF) de la distribución de Poisson es:
+\[
+P(X=k) = \frac{\lambda^k e^{-\lambda}}{k!}
+\]
+donde \(\lambda\) es la tasa promedio de ocurrencia.
+\end{frame}
+
+
+\begin{frame}
+\begin{center}
+\caption{Distribución de probabilidades para una v.a. Poisson$(\lambda)$}
+\includegraphics[width=0.6\textwidth]{Poisson}
+\end{center}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Ejemplo: Número de Llamadas en una Hora}
+Supongamos que el número de llamadas a un centro de atención al cliente en una hora sigue una distribución de Poisson con \(\lambda = 10\). Queremos calcular la probabilidad de recibir exactamente 5 llamadas en una hora.
+
+Usando la distribución de Poisson:
+\[
+P(X = 5) = \texttt{dpois(5, lambda = 10)}
+\]
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Ejemplo: Clientes en una Boutique}
+Supongamos que el número de clientes que ingresan a una boutique en 30 minutos sigue una distribución de Poisson con \(\lambda = 8\). Queremos calcular:
+
+\begin{itemize}
+    \item La probabilidad de que exactamente 6 clientes ingresen en 30 minutos.
+    \item La probabilidad de que al menos 10 clientes ingresen en esos 30 minutos.
+\end{itemize}
+
+Usando la distribución de Poisson:
+
+\begin{itemize}
+    \item Probabilidad puntual: \(P(X = 6) = \texttt{dpois(6, lambda = 8)}\)
+    \item Probabilidad acumulada: \(P(X \geq 10) = 1 - \texttt{ppois(9, lambda = 8)}\)
+\end{itemize}
+\end{frame}
+
+
+
+\subsection{El Teorema del Límite Central}
+\begin{frame} 
+\frametitle{El Teorema del Límite Central}
+\begin{itemize}
+    \item Es tal vez el resultado más importante en la estadística.
+    \item Afirma que la distribución de la suma (o promedio) de una gran cantidad de variables aleatorias independientes e idénticamente distribuidas se aproxima a una distribución normal.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Teorema del Límite Central}
+
+Sea \(X_1, X_2, \ldots, X_n\) una muestra aleatoria de \( n \) observaciones tomadas de una población con media \( \mu \) y varianza \( \sigma^2 \) (finitas).
+
+
+\vfill
+
+Si \( n \) es suficientemente grande, la distribución de la suma \( S_n = X_1 + X_2 + \ldots + X_n \) (o el promedio) tiende a una distribución normal, independientemente de la forma de la distribución original de la población.
+
+Formalmente,
+\[ \frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \xrightarrow{n \to \infty} N(0,1) \]
+
+donde \( \bar{X} \) es la media de la muestra.
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{!El TLC en la práctica!}
+\centering
+\href{https://onlinestatbook.com/stat_sim/sampling_dist/index.html}{\huge Simulador del TLC}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Ejercicio: Teorema del Límite Central y Poisson}
+
+Supongamos que una empresa recibe en promedio 10 correos electrónicos por hora y que la distribución de los correos sigue una distribución de Poisson. Si se observa la media de correos recibidos durante 50 horas, ¿cuál es la probabilidad de que esa media sea mayor a 11 correos por hora?
+
+Datos:
+\begin{itemize}
+    \item \( X_i \) ~ Poisson(\(\lambda = 10\))
+    \item Por el Teorema del Límite Central: \(\bar{X} \) ~ \( N\left(\mu = \lambda, \sigma^2 = \frac{\lambda}{n}\right) \)
+    \item \( n = 50 \) (horas)
+\end{itemize}
+
+Aplicando:
+\[
+P(\bar{X} > 11) \approx P\left(Z > \frac{11 - 10}{\sqrt{10/50}}\right)
+\]
+
+El valor resultante puede encontrarse en una tabla z o mediante software estadístico.
+
+\end{frame}
+
+
+\subsection{La Distribución t}
+\begin{frame}
+\frametitle{La Distribución t de Student}
+La distribución t de Student es similar a la normal, pero con colas más pesadas. Se define mediante:
+\[
+f(t | \nu) = \frac{\Gamma(\frac{\nu+1}{2})}{\sqrt{\nu\pi}\Gamma(\frac{\nu}{2})} \left(1 + \frac{t^2}{\nu}\right)^{-\frac{\nu+1}{2}}
+\]
+donde \(\nu\) son los grados de libertad.
+\end{frame}
+
+
+
+
+\begin{frame}[Distribución $t$ de Student]
+
+\begin{center}
+\includegraphics[width=0.7\textwidth]{Figuras/t.pdf}
+\end{center}
+
+\end{frame}
+
+
+
+\subsection{Ejemplo Práctico}
+\begin{frame}
+\frametitle{Ventas}
+Supongamos que las ventas diarias de un producto siguen una distribución normal con \(\mu = 100\) y \(\sigma = 15\). Queremos calcular la probabilidad de que las ventas sean mayores que 120 en un día dado.
+
+Usando la distribución normal:
+\[
+P(X > 120) = 1 - P(X \leq 120) = 1 - \texttt{pnorm(120, mean = 100, sd = 15)}
+\]
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Cálculo de la Probabilidad Normal en R}
+Podemos calcular la probabilidad en R usando la función \texttt{pnorm()}.
+
+\begin{verbatim}
+# Parámetros
+mu <- 100  # Media
+sigma <- 15 # Desviación estándar
+x <- 120  # Valor dado
+
+# Calcular la probabilidad
+probabilidad <- 1 - pnorm(x, mean = mu, sd = sigma)
+\end{verbatim}
+
+\end{frame}
+
+
+\end{document}

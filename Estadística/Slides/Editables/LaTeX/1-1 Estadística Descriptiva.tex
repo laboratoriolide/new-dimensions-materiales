@@ -1,0 +1,444 @@
+%https://www.learnbyexample.org/r-box-whisker-plot-base-graph/
+
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+\decimalpoint
+\usetheme{Madrid}
+
+\usepackage{xcolor}
+\definecolor{myblue}{HTML}{427A92}
+\setbeamercolor{structure}{fg=myblue}
+\setbeamercolor{frametitle}{bg=myblue}
+
+\setbeamerfont{frametitle}{size=\huge}
+
+% \usebackgroundtemplate{%
+% \centering\includegraphics[width=\paperwidth,height=\paperheight]{Figuras/logo-mobile2.png}
+% }
+
+\title[1.1. Estadística Descriptiva]{\Huge 1.1. Estadística Descriptiva}
+\subtitle{1. Estadística y Probabilidad Básica}
+
+\author{Christian E. Galarza}
+\date{\bf Programa New Dimensions}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{Estadística Descriptiva}
+
+\begin{frame}
+\frametitle{¿Qué es la estadística?}
+
+\begin{itemize}
+    \item La estadística es la ciencia de recoger, analizar, interpretar, presentar y organizar datos. 
+    \item Es aplicable en diversas disciplinas, desde el comercio hasta la ingeniería, las ciencias de la salud y las ciencias sociales.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Estadística descriptiva e inferencial}
+
+\begin{itemize}
+    \item \textbf{Estadística Descriptiva:} Sumariza y describe las características de un conjunto de datos.
+    \item \textbf{Estadística Inferencial:} Realiza conclusiones a partir de los datos de una muestra a una población más grande.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Clasificación de tipos de datos}
+
+\begin{itemize}
+    \item \textbf{Datos cuantitativos:} Números que representan una cantidad o un recuento.
+    \item \textbf{Datos cualitativos:} No numéricos e incluyen variables de categoría y clasificación.
+\end{itemize}
+
+
+
+
+\end{frame}
+
+
+\begin{frame}{Análisis Gráfico de Variables Cualitativas}
+  \textbf{Definición:} Las variables cualitativas describen categorías o atributos que no pueden ser cuantificados con números.\\
+  \textbf{Gráficos Descriptivos:} Para variables cualitativas, los gráficos de barras son una herramienta común y efectiva.
+  \begin{itemize}
+    \item \textbf{Por qué Barras:} Permiten representar fácilmente la frecuencia o proporción de cada categoría, mostrando la comparación entre ellas.
+    \item \textbf{Ejemplo:} Si se tiene una variable cualitativa como ``Marca de Automóvil,'' un gráfico de barras podría mostrar la cantidad de cada marca en una muestra.
+  \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Análisis Gráfico de Variables Cualitativas}
+  \textbf{Tablas de Frecuencia:} Además de los gráficos, las tablas de frecuencia pueden ser útiles.
+  \begin{itemize}
+    \item \textbf{Qué Son:} Listan las categorías junto con la frecuencia (o proporción) de cada una en el conjunto de datos.
+    \item \textbf{Beneficio:} Proporcionan una visión rápida y clara de la distribución de la variable cualitativa.
+  \end{itemize}
+  %\includegraphics[width=0.5\textwidth]{example-image.png} % Descomentar si quieres incluir una imagen
+  \textbf{Nota:} Es vital entender que las variables cualitativas no admiten gráficos que requieran una escala numérica, como los de línea o dispersión, ya que no representan cantidades medibles.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Medidas de centralización}
+
+\begin{itemize}
+    \item Proporcionan un resumen numérico de los datos.
+    \item Incluyen la media, mediana y moda.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Media y Mediana}
+
+\begin{itemize}
+    \item \textbf{Media:} La suma de todos los datos dividida por el número de datos. 
+    \begin{equation*}
+    \text{Media (}\bar{x}\text{)} = \frac{\sum x_i}{n}
+    \end{equation*}
+    \item \textbf{Mediana:} El valor del punto medio que divide los datos en dos mitades.
+\end{itemize}
+
+\end{frame}
+
+% Continúa con más diapositivas
+
+% Continuación del código anterior
+
+\begin{frame}
+\frametitle{Media vs. Mediana}
+
+\begin{itemize}
+    \item La \textbf{media} es la suma de todos los datos dividida por el número total de datos.
+    \item La \textbf{mediana} es el valor medio que divide los datos en dos mitades.
+    \item Si la distribución es simétrica, media y mediana son iguales. Si es asimétrica, pueden diferir.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Medidas de dispersión}
+
+\begin{itemize}
+    \item Las medidas de dispersión indican cuán dispersos están los datos. Incluyen la varianza, la desviación estándar y el rango intercuartil (IQR).
+    \item \textbf{Varianza (s²):} 
+    \begin{equation*}
+    s^2 = \frac{\sum (x_i - \bar{x})^2}{n-1}
+    \end{equation*}
+    \item \textbf{Desviación estándar (s):} 
+    \begin{equation*}
+    s = \sqrt{s^2}
+    \end{equation*}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Medidas de dispersión}
+
+\begin{itemize}
+
+\item El coeficiente de variación (CV) es una medida de la dispersión relativa que se calcula como la desviación estándar dividida por la media, y se expresa generalmente en porcentaje. 
+
+\item La fórmula para el coeficiente de variación es:
+
+\[
+CV = \frac{s}{\bar{x}} \times 100\%
+\]
+
+\item El coeficiente de variación es útil para comparar la variabilidad de dos o más conjuntos de datos en diferentes escalas.
+\end{itemize}
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Medidas de posición: Cuartiles, Cuantiles, y Quintiles}
+
+\begin{itemize}
+    \item Estas medidas dividen un conjunto de datos en partes iguales.
+    \item Los cuartiles dividen los datos en cuatro partes iguales.
+    \item Los quintiles dividen los datos en cinco partes iguales.
+    \item Los cuantiles son puntos tomados a intervalos regulares, dividiendo un conjunto de datos en regiones de igual probabilidad.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Encontrando valores atípicos usando el IQR}
+
+\begin{itemize}
+    \item El rango intercuartil (IQR) es una medida de dispersión estadística y se utiliza para identificar valores atípicos.
+    \item Se calcula como la diferencia entre el tercer cuartil (Q3) y el primer cuartil (Q1).
+    \item Un valor atípico está fuera del rango: 
+    \begin{equation*}
+    [Q1 - 1.5 \times IQR, Q3 + 1.5 \times IQR]
+    \end{equation*}
+    \item Estos se representan con asteriscos.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Gráficos Descriptivos: Histograma}
+
+\begin{itemize}
+    \item Un histograma es un gráfico que muestra la distribución de frecuencia de un conjunto de datos continuos.
+    \item El eje x representa los intervalos de datos y el eje y la frecuencia.
+\end{itemize}
+
+\begin{figure}
+\includegraphics[width=0.4\textwidth]{Figuras/typical-histogram.png}
+\caption{Histograma de frecuencias}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Gráficos Descriptivos: Diagrama de cajas}
+
+\begin{itemize}
+    \item Un diagrama de cajas (o boxplot) es una forma de representar gráficamente grupos de datos numéricos a través de sus cuartiles.
+    \item Ayuda a identificar valores atípicos y a entender la variabilidad de los datos.
+\end{itemize}
+
+\begin{figure}
+\includegraphics[width=0.3\textwidth]{Figuras/typical-box-whisker-plot.png}
+\caption{Diagrama de cajas}
+\end{figure}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{}
+\begin{center}
+\Huge Ejemplo práctico
+\end{center}
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Ventas Diarias}
+Las ventas diarias de un negocio de tecnología durante un mes cualquiera fueron:
+
+{\small 
+$$
+\{7988, 2098, 5787, 4484, 6998, 5421, 3088, 4621, 7652, 5856, 2289, 4118, 7138, 6942, 9063,$$
+$$2556, 5320, 2954, 7580, 9457, 4976, 5272, 9709, 3707,6440, 1967, 9202, 5084, 1013, 6879\}
+$$
+}
+
+\vfill
+
+\begin{center}
+{\bf
+¿Qué información relevante ¿para la toma de decisiones podemos extraer?}
+    
+\end{center}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Media}
+La media (promedio) de las ventas es calculada como la suma de todas las ventas dividida por el número de ventas. En este caso:
+\[
+\frac{7988 + 2098 + 5787 + \ldots + 5084 + 1013 + 6879}{30} = 5521.97
+\]
+
+\vfill \textbf{Traducción:} En promedio, el negocio de tecnología vende \$5521.97 diarios.
+\end{frame}
+
+\begin{frame}
+\frametitle{Mediana}
+La mediana de las ventas es el valor medio cuando las ventas están ordenadas. En este caso, como tenemos un número par de ventas, la mediana es el promedio de los dos valores medios:
+\[
+\frac{5370 + 5371}{2} = 5370.5
+\]
+
+\vfill \textbf{Traducción:} La mediana de \$5370.5 sugiere que la mitad de los días, el negocio de tecnología vendió más de \$5370.5, y la otra mitad de los días, vendió menos de \$5370.5.
+\end{frame}
+
+\begin{frame}
+\frametitle{Varianza}
+La varianza de las ventas es la media de las diferencias al cuadrado entre cada venta y la media. En este caso:
+{\small \[
+\frac{(7988 - 5521.97)^2 + (2098 - 5521.97)^2 + \ldots  + (6879 - 5521.97)^2}{30} = 5789.11
+\]
+}
+\vfill \textbf{Traducción:} ??
+\end{frame}
+
+\begin{frame}
+\frametitle{Desviación Estándar}
+La desviación estándar de las ventas es la raíz cuadrada de la varianza:
+\[
+\sqrt{5789.11} = 76.07
+\]
+\vfill \textbf{Traducción:} ??
+\end{frame}
+
+\begin{frame}
+\frametitle{Coeficiente de Variación}
+
+En el caso de las ventas diarias de nuestro negocio de tecnología, el coeficiente de variación se calcula de la siguiente manera:
+
+\[
+CV = \frac{76.07}{5521.97} \times 100\% = 1.38\%
+\]
+
+\vfill
+
+\textbf{Traducción:} El coeficiente de variación de 1.38\% indica que la desviación estándar es el 1.38\% de la media. Esto sugiere que las ventas diarias del negocio de tecnología son bastante consistentes, ya que el coeficiente de variación es relativamente bajo. En otras palabras, la mayoría de las ventas diarias están cerca del promedio de ventas.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Cuartiles}
+Los cuartiles de las ventas son los tres puntos que dividen el conjunto de datos en cuatro partes iguales. En este caso, los cuartiles son:
+\[
+Q1 = 3707, \quad Q2 (Mediana) = 5370.5, \quad Q3 = 7138
+\]
+\vfill \textbf{Traducción:} El primer cuartil (Q1) de \$3707 indica que el 25\% de los días, el negocio de tecnología vendió menos de \$3707. El tercer cuartil (Q3) de \$7138 indica que el 25\% de los días, el negocio de tecnología vendió más de \$7138.
+\end{frame}
+
+\begin{frame}
+\frametitle{Rango Intercuartil}
+El rango intercuartil de las ventas es la diferencia entre el tercer cuartil y el primer cuartil. Se utiliza para identificar valores atípicos. En este caso:
+\[
+Q3 - Q1 = 7138 - 3707 = 3431
+\]
+\vfill \textbf{Traducción:} El rango intercuartil de \$3431 indica que la mayoría de las ventas diarias del negocio de tecnología (el 50\% central) se encuentran dentro de este rango.
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]
+\frametitle{Cálculo de las Medidas Estadísticas en R}
+Para calcular estas medidas estadísticas en R, primero necesitamos los datos. Supongamos que los datos están almacenados en un vector llamado \texttt{salesData}.
+
+\begin{verbatim}
+salesData <- c(7988, 2098, 5787, 4484, 6998, 5421, 3088, 4621, 7652, 5856, 
+               2289, 4118, 7138, 6942, 9063, 2556, 5320, 2954, 7580, 9457, 
+               4976, 5272, 9709, 3707, 6440, 1967, 9202, 5084, 1013, 6879)
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Media y Mediana en R}
+Podemos calcular la media y la mediana con las funciones \texttt{mean()} y \texttt{median()}.
+
+\begin{verbatim}
+meanSales <- mean(salesData)
+medianSales <- median(salesData)
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Varianza y Desviación Estándar en R}
+La varianza y la desviación estándar se pueden calcular con las funciones \texttt{var()} y \texttt{sd()}.
+
+\begin{verbatim}
+varianceSales <- var(salesData)
+stdDevSales <- sd(salesData)
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Cuartiles y Rango Intercuartil en R}
+Los cuartiles y el rango intercuartil se pueden calcular con la función \texttt{quantile()} y la función \texttt{IQR()}.
+
+\begin{verbatim}
+quartilesSales <- quantile(salesData, probs = c(0.25, 0.5, 0.75))
+iqrSales <- IQR(salesData)
+\end{verbatim}
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]
+\frametitle{Histograma en R}
+En R, podemos usar la función \texttt{hist()} para crear un histograma.
+
+\begin{verbatim}
+# Crear un histograma de las ventas
+hist(salesData, main = "Histograma de las Ventas", 
+     xlab = "Ventas", ylab = "Frecuencia", col = "blue", border = "black")
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Diagrama de Cajas en R}
+En R, podemos usar la función \texttt{boxplot()} para crear un diagrama de cajas.
+
+\begin{verbatim}
+# Crear un diagrama de cajas de las ventas
+boxplot(salesData, main = "Diagrama de Cajas de las Ventas", 
+        ylab = "Ventas", col = "lightgreen", border = "black")
+\end{verbatim}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Recursos}
+Para más información y ejemplos de cómo utilizar R, puedes visitar el siguiente enlace:
+
+\url{https://www.learnbyexample.org/r/}
+\end{frame}
+
+
+\end{document}
+
+
+¿La estadística descriptiva resume datos mientras que la estadística inferencial hace conclusiones sobre una población más grande?
+a) Sí
+b) No
+Respuesta correcta: a)
+
+¿Pueden diferir la media y la mediana en una distribución asimétrica?
+a) Sí
+b) No
+Respuesta correcta: a)
+
+¿Qué medida identifica valores atípicos?
+a) Media
+b) Rango intercuartil
+c) Moda
+d) Coeficiente de variación
+Respuesta correcta: b)
+
+¿Un cuantil divide un conjunto de datos en regiones de igual probabilidad?
+a) Sí
+b) No
+Respuesta correcta: a)
+
+¿Cuál medida es útil para comparar la variabilidad en diferentes escalas?
+a) Varianza
+b) Coeficiente de variación
+c) Desviación estándar
+d) Rango
+Respuesta correcta: b)

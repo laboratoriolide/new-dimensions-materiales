@@ -1,0 +1,106 @@
+---
+title: "Clasificación de clientes de banca usando regresión logística"
+output: html_document
+---
+
+### Introducción
+
+
+En este proyecto, analizaremos los datos del conjunto de datos real de marketing bancario de la [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/222/bank+marketing). El conjunto de datos contiene información sobre clientes de un banco que fueron contactados por un agente de ventas para ofrecer un nuevo producto bancario. La variable objetivo es "y", que indica si el cliente aceptó o no el nuevo producto.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggplot2)
+library(rlang)
+library(DT)
+library(remotes)
+```
+
+# Carga de Datos
+
+Cargamos el conjunto de datos del banco portugués.
+
+```{r data load, include=FALSE}
+library(readr)
+bank_full <- read_delim("Datos banco/bank-full.csv", 
+    delim = ";", escape_double = FALSE, trim_ws = TRUE)
+
+bank_full <- bank_full %>%
+  mutate(across(where(is.character), as.factor))
+```
+
+Los datos luces de la siguiente forma:
+
+```{r}
+datatable(bank_full%>% head(100))
+```
+
+Como podemos ver en el histograma siguiente, la clase "no" tiene muchas más observaciones que la clase "sí". Esto significa que el conjunto de datos está *desbalanceado*.
+
+```{r warning=FALSE}
+ggplot(bank_full, aes(x = y)) +
+  geom_bar(aes(y = ..count../sum(..count..), fill = y), width = 0.7) +
+  labs(x = "Aceptación del producto", y = "Frecuencia Relativa") +
+  scale_y_continuous(labels = scales::percent)
+```
+
+### Balanceo de datos
+
+Para balancear el conjunto de datos, podemos utilizar un método de resampling (remuestreo). Un método de resampling es un método que crea nuevas observaciones para la clase minoritaria. Esto ayuda a garantizar que ambas clases estén representadas de manera uniforme en el conjunto de datos balanceado.
+
+*El uso de datos desbalanceados en clasificación puede generar modelos sesgados, con alta capacidad para identificar la clase mayoritaria pero pobre rendimiento en detectar la clase minoritaria. Esto puede resultar en análisis engañosos y decisiones subóptimas, siendo crucial aplicar técnicas de balanceo para construir un modelo más preciso y justo.*
+
+En esta tarea vamos a utilizar el método SMOTE para balancear el conjunto de datos. SMOTE crea nuevas observaciones para la clase minoritaria emparejando observaciones de la clase minoritaria con observaciones de la clase mayoritaria.
+
+```{r include=FALSE}
+#remotes::install_github("cran/DMwR") # lo rodamos una única vez
+```
+
+```{r message=FALSE, warning=FALSE}
+library(DMwR)
+smote_dataset <- as.data.frame(bank_full) # dataset para aplicar smote
+smote_dataset$y <- as.factor(smote_dataset$y) # Aseguramos que y sea un factor
+bank_full_balanced <- SMOTE(y ~ ., data = smote_dataset, perc.over = 100, k = 5)
+```
+
+Y ahora verificamos que la data se encuentra balanceada y lista para ser trabajada.
+
+```{r}
+# Verificamos el balanceo de datos creando un nuevo diagrama de barras
+ggplot(bank_full_balanced, aes(x = y)) +
+  geom_bar(aes(y = ..count../sum(..count..), fill = y), width = 0.7) +
+  labs(x = "Aceptación del producto", y = "Frecuencia Relativa") +
+  scale_y_continuous(labels = scales::percent)
+```
+
+## Desarrollo
+
+Ahora sí, con la data balanceada podemos trabajar:
+
+- Implemente un modelo de regresión logística para explorar la relación entre las variables disponibles y la respuesta del cliente (aceptar o no el nuevo producto).
+
+- Realice un análisis similar al llevado a cabo durante la práctica en clase, con el objetivo de identificar los factores que influyen en la decisión del cliente de aceptar o no el nuevo producto. Indentifique, cuantifique, concluya.
+
+- Evalúe la capacidad predictiva del modelo desarrollado utilizando una matriz de confusión. Para ello, divida los datos en un conjunto de entrenamiento (80%) y un conjunto de prueba (20%), seleccionados de manera completamente aleatoria. Para esto, use la librería `caret` de la siguiente forma:
+
+```{r eval=FALSE}
+library(caret)
+set.seed(123)
+trainIndex <- createDataPartition(bank_full_balanced$y, p = 0.8, 
+                                  list = FALSE, 
+                                  times = 1)
+
+trainData <- bank_full_balanced[ trainIndex,] # datos de entrenamiento
+testData  <- bank_full_balanced[-trainIndex,] # datos de prueba
+```
+
+- Finalmente, emplee la matriz de confusión para evaluar la precisión, sensibilidad y especificidad del modelo, lo que permitirá obtener una visión más clara de su desempeño general. Válgase de los siguientes códigos:
+
+```{r eval=FALSE}
+library(caret)
+confusionMatrix(data=y_predichos_en_datosprueba,
+                reference = y_reales_en_datosprueba,
+                positive="yes") # aquí se indica que valor es el positivo
+```
+
