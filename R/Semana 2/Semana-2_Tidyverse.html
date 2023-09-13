@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Tidyverse</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Zulemma Bazurto Blacio" />
+    <meta name="date" content="2023-09-12" />
+    <script src="libs/header-attrs-2.17/header-attrs.js"></script>
+    <link rel="stylesheet" href="css/main.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+layout: true
+
+
+
+&lt;style type="text/css"&gt;
+.remark-code{line-height: 1.5; font-size: 90%}
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+&lt;/style&gt;
+
+---
+
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+
+#.large[.fontone[.left[.opaco[Tidyverse]]]]
+
+### .center[.large[.fontone[.red[Importación y manipulación de datos]]]]
+
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+
+### .right[.opaco[.extralarge[&lt;br&gt;.fontone[Zulemma Bazurto Blacio  &lt;br&gt; New Dimensions | 2023]]]]
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+# .weight[.fontone[.nd[El proceso Tidyverse]]]
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+## .weight[.fontone[.nd[.left[El proceso Tidyverse: Los primeros pasos en análisis de datos]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;img src="fig/tidyverse.png" width="600" /&gt;
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+## .weight[.fontone[.nd[.left[El proceso Tidyverse: Los primeros pasos en análisis de datos]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+
+--
+
+&lt;div class="left fontone opaco medium"&gt;
+&lt;ul style="list-style-type: disc"&gt;
+&lt;li&gt;.nd[Import:] Obtener y entender los datos&lt;/li&gt;
+&lt;br&gt;
+&lt;li&gt;.nd[Tidy:] Ordenar los datos de tal manera que sea sencillo transformarlos, sumarizarlo, visualizarlos o realizar un modelo con ellos&lt;/li&gt;
+&lt;br&gt;
+&lt;li&gt;.nd[Transform:] Manipular los datos hasta obtener el input que el análisis o técnica estadística necesita&lt;/li&gt;
+&lt;br&gt;
+&lt;li&gt;.nd[Visualize:] Realizar el análisis exploratorio de datos&lt;/li&gt;
+&lt;br&gt;
+&lt;li&gt;.nd[Model:] Aplicar técnicas estadísticas para el entendimiento del problema o tomar decisiones&lt;/li&gt;
+&lt;br&gt;
+&lt;li&gt;.nd[Comunicate:] Mostrar los resultados de tal forma que el resto del mundo los entienda, usando reportes, gráficos, visualizaciones interactivas, integración con herramientas de BI, web apps, etc. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+# .weight[.fontone[.nd[Importando datos]]]
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+## .weight[.fontone[.nd[.left[Importando datos: Importar csv]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+--
+
+#### .fontone[.opaco[.left[Desde RStudio (R-base o paquete 'readr'):]]]
+
+&lt;div class="left fontone opaco"&gt;
+Import Dataset &gt; From Text File &gt; Escoger archivo &gt; Abrir &gt; Escribir nombre a la variable &gt; Import
+&lt;/div&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+
+--
+
+#### .fontone[.opaco[.left[Con comando:]]]
+
+&lt;div class="left fontone opaco"&gt;
+.blues[read.csv( file, sep = "," , dec = "," , stringsAsFactors= FALSE)]
+&lt;/div&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+
+--
+
+#### .fontone[.opaco[.left[Para grandes volúmenes de datos usar paquete 'data.table':]]]
+
+&lt;div class="left fontone opaco"&gt;
+.blues[fread()]
+&lt;/div&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+
+--
+
+#### .fontone[.opaco[.left[Paquete 'vromm: actualmente ya en tidyverse]]]
+
+&lt;div class="left fontone opaco"&gt;
+https://www.tidyverse.org/blog/2019/05/vroom-1-0-0/
+&lt;/div&gt;
+&lt;br&gt;
+&lt;div class="left fontone opaco"&gt;
+https://vroom.r-lib.org/
+&lt;/div&gt;
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+## .weight[.fontone[.nd[.left[Importando datos: Importar desde excel]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+--
+
+#### .fontone[.opaco[.left[Copiando desde un archivo de excel abierto:]]]
+
+&lt;div class="left fontone opaco"&gt;
+.blues[read.table("clipboard", sep="\t", header=TRUE)]
+&lt;/div&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+
+--
+
+#### .fontone[.opaco[.left[Desde RStudio:]]]
+
+&lt;div class="left fontone opaco"&gt;
+Rstudio &gt; Import Dataset &gt; From Excel &gt; Escoger archivo &gt; Abrir &gt; Escribir nombre a la variable &gt; Import
+&lt;/div&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+
+--
+
+#### .fontone[.opaco[.left[Usando el paquete 'openxlsx':]]]
+
+&lt;div class="left fontone opaco"&gt;
+.blues[read.xlsx(xlsxFile , sheet , startRow , colNames , skipEmptyRows, rowNames)]
+&lt;br&gt;
+.blues[data_tiempo_espera &lt;- read.xlsx(xlsxFile = 'Data/Data_Banco.xlsx')]
+&lt;br&gt;
+&lt;/div&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+
+--
+
+#### .fontone[.opaco[.left[Otros paquetes]]]
+
+&lt;div class="left fontone opaco"&gt;
+.blues[excel.link, XLConnect, xlsx, readxl, rio]
+&lt;/div&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+## .weight[.fontone[.nd[.left[Importando datos: Importar desde SPSS, SAS, Stata, etc]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+--
+
+#### .fontone[.opaco[.left[Desde RStudio:]]]
+
+&lt;div class="left fontone opaco"&gt;
+Rstudio &gt; Import Dataset &gt; From SPSS/SAS/STATA
+&lt;/div&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+
+--
+
+#### .fontone[.opaco[.left[Usando el paquete 'foreign':]]]
+
+&lt;div class="left fontone opaco"&gt;
+SAS: .blues[read.xport()]
+&lt;br&gt;
+SPSS: .blues[read.spss()]
+&lt;br&gt;
+Stata: .blues[read.dta()]
+&lt;br&gt;
+Soporta otros formatos
+&lt;br&gt;
+&lt;/div&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+--
+
+#### .fontone[.opaco[.left[Usango el paquete 'haven':]]]
+
+&lt;div class="left fontone opaco"&gt;
+SAS: .blues[read_sas()] y .blues[read_xpt()]
+&lt;br&gt;
+SPSS: .blues[read_sav()] y .blues[read_por()]
+&lt;br&gt;
+Stata: .blues[read_dta()]
+&lt;br&gt;
+Se puede usar el paquerte 'rio'
+&lt;br&gt;
+&lt;/div&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+--
+
+#### .fontone[.opaco[.left[Otros paquetes]]]
+
+&lt;div class="left fontone opaco"&gt;
+.blues[excel.link, XLConnect, xlsx, readxl, rio]
+&lt;/div&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+# .weight[.fontone[.nd[Ejemplo - .opaco[Data de transacciones bancarias]]]]
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+## .weight[.fontone[.nd[.left[Ejemplo: Data de transacciones bancarias]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;div class="left fontone opaco medium"&gt;
+El Banco del Pacífico requiere mejorar los tiempos de atención al cliente en ventanilla, para ello ha recolectado esta información anónimamente para cada cajero y transacción realizada.   
+&lt;br&gt;
+&lt;br&gt;
+.weight[Le suministran un excel con dos hojas:]
+&lt;br&gt;
+&lt;br&gt;
+.weight[1.] Tiene los datos de las transacciones, columnas: Sucursal, Cajero, ID_Transaccion, Transaccion, Tiempo_Servicio_seg, Nivel de satisfacción, Monto de la transaccion. 
+&lt;br&gt;
+&lt;br&gt;
+.weight[2.] Otra hoja que indica si en la sucursal se ha puesto o no el nuevo sistema.
+&lt;/div&gt;
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+## .weight[.fontone[.nd[.left[Ejemplo: Data de transacciones bancarias]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+
+### .weight[.fontone[.opaco[Revisar archivo de excel: Data_Banco.xlsx]]]
+
+&lt;div class="left fontone opaco medium"&gt;
+.weight[1.] Crear un proyecto en RStudio, con las carpetas Data, Exports, etc
+&lt;br&gt;
+&lt;br&gt;
+.weight[2.] Poner en la carpeta 'Data', el excel suministrado
+&lt;/div&gt;
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+# .weight[.fontone[.nd[Ejemplo - .opaco[Importar]]]]
+
+---
+
+
+
+count: false
+
+
+```r
+# Cargar la librería a utilizar
+*library(openxlsx)
+```
+
+---
+count: false
+
+
+```r
+# Cargar la librería a utilizar
+library(openxlsx)
+
+# Leer el archivo de excel y asignarlo al objeto data_banco
+*data_banco &lt;- read.xlsx(xlsxFile="data/Data_Banco.xlsx", sheet = "Data")
+```
+
+---
+count: false
+
+
+```r
+# Cargar la librería a utilizar
+library(openxlsx)
+
+# Leer el archivo de excel y asignarlo al objeto data_banco
+data_banco &lt;- read.xlsx(xlsxFile="data/Data_Banco.xlsx", sheet = "Data")
+*data_sucursal &lt;- read.xlsx(xlsxFile = "data/Data_Banco.xlsx", sheet = "Data_Sucursal")
+```
+
+&lt;style&gt;
+.panel1-chunk-24-auto {
+  color: black;
+  width: 99%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel2-chunk-24-auto {
+  color: black;
+  width: NA%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel3-chunk-24-auto {
+  color: black;
+  width: NA%;
+  hight: 33%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+&lt;/style&gt;
+
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+
+## .weight[.fontone[.nd[.left[Explorando la data]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+
+### .weight[.fontone[.opaco[.left[¿Qué  tipo de estructura hemos importado?]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+
+```r
+str(data_banco)
+```
+
+```
+## 'data.frame':	24299 obs. of  7 variables:
+##  $ Sucursal           : num  62 62 62 62 62 62 62 62 62 62 ...
+##  $ Cajero             : num  4820 4820 4820 4820 4820 4820 4820 4820 4820 4820 ...
+##  $ ID_Transaccion     : chr  "2" "2" "2" "2" ...
+##  $ Transaccion        : chr  "Cobro/Pago (Cta externa)" "Cobro/Pago (Cta externa)" "Cobro/Pago (Cta externa)" "Cobro/Pago (Cta externa)" ...
+##  $ Tiempo_Servicio_seg: num  311 156 248 99 123 172 140 247 183 91 ...
+##  $ Satisfaccion       : chr  "Muy Bueno" "Malo" "Regular" "Regular" ...
+##  $ Monto              : chr  "2889,3" "1670,69" "3172,49" "1764.92" ...
+```
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+## .weight[.fontone[.nd[.left[Entender los datos]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+--
+
+&lt;div class="left fontone opaco"&gt;
+.weight[Luego de importar se debe entender los datos]
+&lt;/div&gt;
+&lt;div class="left fontone opaco"&gt;
+&lt;ul style="list-style-type: disc"&gt;
+&lt;li&gt;¿Qué representa cada columna?&lt;/li&gt;
+&lt;br&gt;
+&lt;li&gt;¿Qué tipo de dato debería tener cada columna?&lt;/li&gt;
+&lt;br&gt;
+&lt;li&gt;¿Qué granularidad o atomicidad tiene la data?&lt;/li&gt;
+&lt;br&gt;
+&lt;li&gt;Si es que se tiene varios conjuntos de datos, ¿Cómo se relacionan los datos?&lt;/li&gt;
+&lt;br&gt;
+&lt;li&gt;A qué periodo de tiempo corresponde la data&lt;/li&gt;
+&lt;br&gt;
+&lt;li&gt;Muchas veces se obtiene la información desde una base de datos y por tanto toca entender la base y el query que genera los datos&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+# .weight[.fontone[.nd[Ejemplo - .opaco[Entender los datos]]]]
+
+---
+
+
+
+count: false
+
+
+```r
+# Podríamos ver las primeras 5 filas
+*head(data_sucursal, n = 5)
+```
+
+---
+count: false
+
+
+```r
+# Podríamos ver las primeras 5 filas
+head(data_sucursal, n = 5)
+
+# Listar los nombres de las columnas
+*names(data_banco)
+```
+
+---
+count: false
+
+
+```r
+# Podríamos ver las primeras 5 filas
+head(data_sucursal, n = 5)
+
+# Listar los nombres de las columnas
+names(data_banco)
+*names(data_sucursal)
+```
+
+&lt;style&gt;
+.panel1-chunk-26-auto {
+  color: black;
+  width: 99%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel2-chunk-26-auto {
+  color: black;
+  width: NA%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel3-chunk-26-auto {
+  color: black;
+  width: NA%;
+  hight: 33%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+&lt;/style&gt;
+
+
+
+---
+
+
+```r
+# Podríamos ver las primeras 5 filas
+head(data_sucursal, n = 5)
+```
+
+```
+##   ID_Sucursal      Sucursal Nuevo_Sistema
+## 1          62 Riocentro Sur            No
+## 2          85        Centro            Si
+## 3         267      Alborada            Si
+## 4         443  Mall del Sol            Si
+## 5         586     Via Daule            No
+```
+
+```r
+# Listar los nombres de las columnas 
+names(data_banco)
+```
+
+```
+## [1] "Sucursal"            "Cajero"              "ID_Transaccion"     
+## [4] "Transaccion"         "Tiempo_Servicio_seg" "Satisfaccion"       
+## [7] "Monto"
+```
+
+```r
+names(data_sucursal)
+```
+
+```
+## [1] "ID_Sucursal"   "Sucursal"      "Nuevo_Sistema"
+```
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+## .weight[.fontone[.nd[.left[Manipulación de datos: Básico]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;div class="left fontone opaco medium"&gt;
+R tiene sus comandos predeterminados para manipular datos, esto se conoce como 'R Base', sin embargo existen varios paquetes que simplifican esta tarea, en este curso veremos como hacerlo con el paquete .blues[dplyr] (y .blues[magrittr]) que están dentro del conjunto de paquetes llamado .blues[tidyverse]
+&lt;/div&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+
+
+```r
+# Cargar la librería
+library(tidyverse)
+```
+
+```
+## -- Attaching packages --------------------------------------- tidyverse 1.3.2 --
+## v ggplot2 3.3.6      v purrr   0.3.5 
+## v tibble  3.1.8      v dplyr   1.0.10
+## v tidyr   1.2.0      v stringr 1.5.0 
+## v readr   2.1.2      v forcats 0.5.1
+```
+
+```
+## Warning: package 'tidyr' was built under R version 4.0.5
+```
+
+```
+## Warning: package 'readr' was built under R version 4.0.5
+```
+
+```
+## Warning: package 'forcats' was built under R version 4.0.5
+```
+
+```
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+```
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+## .weight[.fontone[.nd[.left[Manipulación de datos: Básico]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+
+&lt;div class="left fontone opaco"&gt;
+.weight[Tibbles (un dataframe mejorado):]
+&lt;br&gt;
+Tibble es un objeto del paquete dplyr, entre las mejoras que da es que no imprime todo el objeto en pantalla, sino un resumen del mismo. (más información tipeando ?tibble)
+&lt;/div&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+
+
+```r
+# Convertir el data_banco a un tibble
+data_banco &lt;- tibble::as_tibble(data_banco) 
+# Muestra data_banco
+head(data_banco, n = 5)
+```
+
+```
+## # A tibble: 5 x 7
+##   Sucursal Cajero ID_Transaccion Transaccion              Tiempo~1 Satis~2 Monto
+##      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;                       &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;
+## 1       62   4820 2              Cobro/Pago (Cta externa)      311 Muy Bu~ 2889~
+## 2       62   4820 2              Cobro/Pago (Cta externa)      156 Malo    1670~
+## 3       62   4820 2              Cobro/Pago (Cta externa)      248 Regular 3172~
+## 4       62   4820 2              Cobro/Pago (Cta externa)       99 Regular 1764~
+## 5       62   4820 2              Cobro/Pago (Cta externa)      123 Muy Bu~ 1835~
+## # ... with abbreviated variable names 1: Tiempo_Servicio_seg, 2: Satisfaccion
+```
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+## .weight[.fontone[.nd[.left[Operador Pipe: %&gt;%]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;div class="left fontone opaco medium"&gt;
+El operador Pipe .blues[%&gt;%] del paquete .blues[magrittr] permiten que el código sea más legible porque:
+&lt;/div&gt;
+
+--
+
+&lt;div class="left fontone opaco medium"&gt;
+&lt;ul style="list-style-type: disc"&gt;
+&lt;li&gt;Permite secuencias estructurantes de operaciones de datos de izquierda a derecha (a diferencia de dentro y fuera)&lt;/li&gt;
+&lt;br&gt;
+&lt;li&gt;Evitando llamadas a funciones anidadas&lt;/li&gt;
+&lt;br&gt;
+&lt;li&gt;Minimiza la necesidad de variables locales y definiciones de funciones&lt;/li&gt;
+&lt;br&gt;
+&lt;li&gt;Facilita agregar pasos en cualquier lugar de la programación&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+## .weight[.fontone[.nd[.left[Operador Pipe: %&gt;%]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+
+
+```r
+library(magrittr)
+data_banco %&gt;% names
+```
+
+```
+## [1] "Sucursal"            "Cajero"              "ID_Transaccion"     
+## [4] "Transaccion"         "Tiempo_Servicio_seg" "Satisfaccion"       
+## [7] "Monto"
+```
+
+```r
+data_banco %&gt;% dim
+```
+
+```
+## [1] 24299     7
+```
+
+```r
+data_banco %&gt;% names %&gt;% length 
+```
+
+```
+## [1] 7
+```
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+## .weight[.fontone[.nd[.left[Operador Pipe: %&gt;%]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;div class="left fontone opaco medium"&gt;
+Con la última línea de código le estamos diciendo a R que:
+&lt;/div&gt;
+
+--
+
+&lt;div class="left fontone opaco medium"&gt;
+&lt;ul style="list-style-type: disc"&gt;
+&lt;li&gt;tome el objeto data_banco&lt;/li&gt;
+&lt;br&gt;
+&lt;li&gt;luego (%&gt;%)&lt;/li&gt;
+&lt;br&gt;
+&lt;li&gt;que entregue los nombres de las variables del objeto&lt;/li&gt;
+&lt;br&gt;
+&lt;li&gt;luego (%&gt;%)&lt;/li&gt;
+&lt;br&gt;
+&lt;li&gt;que entregue la longitud (length) del objeto&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+## .weight[.fontone[.nd[.left[Comparación de sintaxis]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;div class="left fontone opaco medium"&gt;
+Ambas dan el mismo resultado pero una es menos intuitiva que otra, .weight[¿cuál?]
+&lt;/div&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+
+```r
+library(magrittr)
+data_banco %&gt;% names %&gt;% length 
+```
+
+```
+## [1] 7
+```
+
+
+```r
+#sintaxis R base
+length(names(data_banco)) # equivalencia del código anterior
+```
+
+```
+## [1] 7
+```
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+# .weight[.fontone[.nd[Los verbos del Tidyverse]]]
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+## .weight[.fontone[.nd[.left[Filtrar filas: filter()]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;div class="left fontone opaco medium"&gt;
+Filtrar las filas según las condiciones dadas en .blues[filter()]
+&lt;/div&gt;
+
+&lt;br&gt;
+
+
+```r
+# Filtrar las filas correspondientes a la sucursal 62
+data_banco %&gt;% filter( Sucursal== 62 ) %&gt;% View
+# Filtrar las filas correspondientes a la sucursal 62 y hayan durado más de 120 segundos
+data_banco %&gt;% filter( Sucursal== 62 &amp; Tiempo_Servicio_seg &gt; 120 ) %&gt;% View
+# Filtrar las filas correspondientes a la sucursal 62,  hayan durado 
+# más de 120 segundos y la evaluación a la satisfacción sea Bueno
+data_banco %&gt;% filter( Sucursal== 62 &amp; Tiempo_Servicio_seg &gt; 120 &amp; Satisfaccion== "Muy Bueno" ) %&gt;% View
+```
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+## .weight[.fontone[.nd[.left[Filtrar filas y seleccionar]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+
+
+```r
+# Con el data banco
+# Filtrar las filas correspondientes a la sucursal 85
+# calcular la correlacion entre Tiempo_Servicio_seg y Monto
+data_banco %&gt;% # Operador pipe total
+  filter( Sucursal== 85 ) %$%  # Operador pipe para seleccion de columnas
+  cor(Tiempo_Servicio_seg, as.numeric(Monto))
+```
+
+```
+## [1] 0.5339392
+```
+
+
+---
+## .weight[.fontone[.nd[.left[Seleccionar columnas: select()]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;div class="left fontone opaco"&gt;
+Seleccionar las columnas Transaccion, Tiempo_Servicio_seg del data frame 'data_banco' pero usando .blues[%&gt;%], lo que permite programar como si se escribiese "del data_banco, selecciona las columnas Transaccion y Tiempo_Servicio_seg"
+&lt;/div&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+
+```r
+# Note que como no se asignó, R evalúa la expresión y presenta el resultado
+# data_banco[ , c("Transaccion", "Tiempo_Servicio_seg") ] ## Base de R
+data_banco %&gt;% select(Transaccion, Tiempo_Servicio_seg) %&gt;% head
+```
+
+```
+## # A tibble: 6 x 2
+##   Transaccion              Tiempo_Servicio_seg
+##   &lt;chr&gt;                                  &lt;dbl&gt;
+## 1 Cobro/Pago (Cta externa)                 311
+## 2 Cobro/Pago (Cta externa)                 156
+## 3 Cobro/Pago (Cta externa)                 248
+## 4 Cobro/Pago (Cta externa)                  99
+## 5 Cobro/Pago (Cta externa)                 123
+## 6 Cobro/Pago (Cta externa)                 172
+```
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;div class="left fontone opaco"&gt;
+&lt;center&gt;&lt;font size="15pt"&gt; .nd[Seleccionar columnas y aplicar una función]
+&lt;br&gt; 
+En la siguiente slide, seleccionaremos la columna Tiempo_Servicio_seg y obtendremos un boxplot.&lt;/font&gt;
+&lt;/div&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+---
+
+
+
+count: false
+ 
+
+.panel1-chunk-34-auto[
+
+```r
+*data_banco
+```
+]
+ 
+.panel2-chunk-34-auto[
+
+```
+## # A tibble: 24,299 x 7
+##    Sucursal Cajero ID_Transaccion Transaccion              Tiemp~1 Satis~2 Monto
+##       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;                      &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;
+##  1       62   4820 2              Cobro/Pago (Cta externa)     311 Muy Bu~ 2889~
+##  2       62   4820 2              Cobro/Pago (Cta externa)     156 Malo    1670~
+##  3       62   4820 2              Cobro/Pago (Cta externa)     248 Regular 3172~
+##  4       62   4820 2              Cobro/Pago (Cta externa)      99 Regular 1764~
+##  5       62   4820 2              Cobro/Pago (Cta externa)     123 Muy Bu~ 1835~
+##  6       62   4820 2              Cobro/Pago (Cta externa)     172 Bueno   2165~
+##  7       62   4820 2              Cobro/Pago (Cta externa)     140 Regular 1304~
+##  8       62   4820 2              Cobro/Pago (Cta externa)     247 Bueno   4080~
+##  9       62   4820 2              Cobro/Pago (Cta externa)     183 Muy Bu~ 2541~
+## 10       62   4820 2              Cobro/Pago (Cta externa)      91 Muy Bu~ 2218~
+## # ... with 24,289 more rows, and abbreviated variable names
+## #   1: Tiempo_Servicio_seg, 2: Satisfaccion
+```
+]
+
+---
+count: false
+ 
+
+.panel1-chunk-34-auto[
+
+```r
+data_banco %&gt;%
+* select(Tiempo_Servicio_seg)
+```
+]
+ 
+.panel2-chunk-34-auto[
+
+```
+## # A tibble: 24,299 x 1
+##    Tiempo_Servicio_seg
+##                  &lt;dbl&gt;
+##  1                 311
+##  2                 156
+##  3                 248
+##  4                  99
+##  5                 123
+##  6                 172
+##  7                 140
+##  8                 247
+##  9                 183
+## 10                  91
+## # ... with 24,289 more rows
+```
+]
+
+---
+count: false
+ 
+
+.panel1-chunk-34-auto[
+
+```r
+data_banco %&gt;%
+  select(Tiempo_Servicio_seg) %&gt;%
+* boxplot
+```
+]
+ 
+.panel2-chunk-34-auto[
+![](Semana-2_Tidyverse_files/figure-html/chunk-34_auto_03_output-1.png)&lt;!-- --&gt;
+]
+
+&lt;style&gt;
+.panel1-chunk-34-auto {
+  color: black;
+  width: 38.6060606060606%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel2-chunk-34-auto {
+  color: black;
+  width: 59.3939393939394%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel3-chunk-34-auto {
+  color: black;
+  width: NA%;
+  hight: 33%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+&lt;/style&gt;
+
+
+
+---
+
+
+```r
+# boxplot(data_banco$Tiempo_Servicio_seg) ## Base de R
+data_banco %&gt;% 
+  select(Tiempo_Servicio_seg) %&gt;% 
+  boxplot
+```
+
+![](Semana-2_Tidyverse_files/figure-html/chunk-35-1.png)&lt;!-- --&gt;
+
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+## .weight[.fontone[.nd[.left[Seleccionar columnas: select()]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;div class="left fontone opaco medium"&gt;
+Seleccionar y ver en el visor de datos de RStudio
+&lt;/div&gt;
+
+&lt;br&gt;
+
+
+```r
+# Seleccionar y ver en el visor de datos de RStudio
+data_banco %&gt;% select(Transaccion, Tiempo_Servicio_seg) %&gt;% View
+```
+
+--
+
+&lt;br&gt;
+
+&lt;div class="left fontone opaco medium"&gt;
+Seleccionar todas las columnas menos Cajero
+&lt;/div&gt;
+
+&lt;br&gt;
+
+
+```r
+# Seleccionar todas las columnas menos Cajero
+data_banco %&gt;% select(-Cajero) %&gt;% View
+```
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+## .weight[.fontone[.nd[.left[select() y sus funciones auxiliares]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;div class="left fontone opaco medium"&gt;
+Seleccionar según nombre de la columna/variable
+&lt;/div&gt;
+
+&lt;br&gt;
+
+
+```r
+# Seleccionar todas las columnas cuyo nombre contenga el texto "Tra"
+data_banco %&gt;% select( contains("Tra")) %&gt;% View
+# Seleccionar todas las columnas cuyo nombre inicie con "S"
+data_banco %&gt;% select( starts_with("S")) %&gt;% View
+# Seleccionar todas las columnas cuyo nombre finalice con "on"
+data_banco %&gt;% select( ends_with("on")) %&gt;% View
+# Seleccionar todas las columnas cuyo nombre contenga una "r" o un "sa"
+data_banco %&gt;% select( matches("r?sa")) %&gt;% View
+# Más información sobre expresiones regulares usando: ?base::regex
+```
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+## .weight[.fontone[.nd[.left[Ordenar las filas: arrange()]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;div class="left fontone opaco medium"&gt;
+Ordenar las filas según lo expresado en .blues[arrange()]
+&lt;/div&gt;
+
+&lt;br&gt;
+
+
+```r
+# Ordenar por la satisfaccion
+data_banco %&gt;% arrange( Satisfaccion ) %&gt;% View
+# Ordenar cada Transaccion y dentro de cada transaccion de mayor a menor por tiempo de servicio
+data_banco %&gt;% arrange( Transaccion, desc(Tiempo_Servicio_seg) ) %&gt;% View
+```
+
+--
+
+&lt;div class="left fontone opaco"&gt;
+Por defecto, .blues[arrange()] organiza los datos de menor a mayor.
+&lt;/div&gt;
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+## .weight[.fontone[.nd[.left[Crear o modificar columnas/variables: mutate()]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;div class="left fontone opaco medium"&gt;
+Crear una nueva columna con el tiempo en minutos. Nótese que .nd[no se asignó], el objeto data_banco no tiene la columna Tiempo_Servicio_Min
+&lt;/div&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+
+--
+
+
+```r
+# Crear una nueva columna con el tiempo en minutos
+data_banco %&gt;% mutate(Tiempo_Servicio_Min= Tiempo_Servicio_seg/60) %&gt;% head
+```
+
+```
+## # A tibble: 6 x 8
+##   Sucursal Cajero ID_Transaccion Transaccion       Tiemp~1 Satis~2 Monto Tiemp~3
+##      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt;
+## 1       62   4820 2              Cobro/Pago (Cta ~     311 Muy Bu~ 2889~    5.18
+## 2       62   4820 2              Cobro/Pago (Cta ~     156 Malo    1670~    2.6 
+## 3       62   4820 2              Cobro/Pago (Cta ~     248 Regular 3172~    4.13
+## 4       62   4820 2              Cobro/Pago (Cta ~      99 Regular 1764~    1.65
+## 5       62   4820 2              Cobro/Pago (Cta ~     123 Muy Bu~ 1835~    2.05
+## 6       62   4820 2              Cobro/Pago (Cta ~     172 Bueno   2165~    2.87
+## # ... with abbreviated variable names 1: Tiempo_Servicio_seg, 2: Satisfaccion,
+## #   3: Tiempo_Servicio_Min
+```
+
+&lt;br&gt;
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+## .weight[.fontone[.nd[.left[Crear o modificar columnas/variables: mutate()]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+
+```r
+# Crear una nueva columna en data_banco con el tiempo en minutos
+data_banco &lt;- data_banco %&gt;%
+  mutate(Tiempo_Servicio_Min= Tiempo_Servicio_seg/60)
+# Mostrar primeras 6 filas
+head(data_banco)
+```
+
+```
+## # A tibble: 6 x 8
+##   Sucursal Cajero ID_Transaccion Transaccion       Tiemp~1 Satis~2 Monto Tiemp~3
+##      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt;
+## 1       62   4820 2              Cobro/Pago (Cta ~     311 Muy Bu~ 2889~    5.18
+## 2       62   4820 2              Cobro/Pago (Cta ~     156 Malo    1670~    2.6 
+## 3       62   4820 2              Cobro/Pago (Cta ~     248 Regular 3172~    4.13
+## 4       62   4820 2              Cobro/Pago (Cta ~      99 Regular 1764~    1.65
+## 5       62   4820 2              Cobro/Pago (Cta ~     123 Muy Bu~ 1835~    2.05
+## 6       62   4820 2              Cobro/Pago (Cta ~     172 Bueno   2165~    2.87
+## # ... with abbreviated variable names 1: Tiempo_Servicio_seg, 2: Satisfaccion,
+## #   3: Tiempo_Servicio_Min
+```
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+## .weight[.fontone[.nd[.left[Nuevas columnas: transmute()]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;div class="left fontone opaco medium"&gt;
+Para conservar solamente las nuevas columnas se usa  .blues[transmute()]
+&lt;/div&gt;
+
+&lt;br&gt;
+
+
+```r
+# Crear una nueva columna con el tiempo en minutos
+data_banco %&gt;%
+  transmute(Tiempo_Servicio_Min= Tiempo_Servicio_seg/60) %&gt;%
+  head
+```
+
+```
+## # A tibble: 6 x 1
+##   Tiempo_Servicio_Min
+##                 &lt;dbl&gt;
+## 1                5.18
+## 2                2.6 
+## 3                4.13
+## 4                1.65
+## 5                2.05
+## 6                2.87
+```
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+## .weight[.fontone[.nd[.left[Crear resúmenes: summarise()]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;div class="left fontone opaco medium"&gt;
+.blues[summarise()] permite aplicar funciones a nuestro data.frame, en R-base se usa .blues[tapply()], otra opcion es .blues[ddply()] del paquete 'plyr'.
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+
+```r
+# Obtener la media del tiempo de servicio
+data_banco %&gt;% 
+  summarise( 
+    MEDIA= mean(Tiempo_Servicio_seg, na.rm=TRUE), 
+    MEDIA_ACOT= mean(Tiempo_Servicio_seg, na.rm = TRUE, trim = 0.05),
+		CANTIDAD= n()
+  )
+```
+
+```
+## # A tibble: 1 x 3
+##   MEDIA MEDIA_ACOT CANTIDAD
+##   &lt;dbl&gt;      &lt;dbl&gt;    &lt;int&gt;
+## 1  156.       142.    24299
+```
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+## .weight[.fontone[.nd[.left[Crear resúmenes para datos agrupados]]]]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;div class="left fontone opaco medium"&gt;
+Obtener medidas de tendencia central para el tiempo de servicio para cada Transacción
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;
+
+
+```r
+# Obtener medidas de tendencia central para el tiempo de servicio para cada tipo de transaccion
+data_banco %&gt;% 
+  group_by(Transaccion) %&gt;%
+  summarise_at( vars(Tiempo_Servicio_seg), 
+                funs (
+                  MEDIA= mean(., na.rm=TRUE), 
+                  MEDIA_ACOT= mean(., na.rm = TRUE, trim = 0.05),
+                  CANTIDAD= n()))
+```
+
+```
+## # A tibble: 3 x 4
+##   Transaccion                 MEDIA MEDIA_ACOT CANTIDAD
+##   &lt;chr&gt;                       &lt;dbl&gt;      &lt;dbl&gt;    &lt;int&gt;
+## 1 Cobrar cheque (Cta del Bco)  186.       175.     5407
+## 2 Cobro/Pago (Cta externa)     301.       285.     3005
+## 3 Deposito                     118.       112.    15887
+```
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+&lt;img style="float:left" src="https://raw.githubusercontent.com/rladies/branding-materials/main/logo/R-LadiesGlobal_RBG_online_LogoWithText_Horizontal.png" width="300"/&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;div class="left fontone opaco"&gt;
+Este material ha sido elaborado a partir de los recursos en español de R-Ladies:
+&lt;/div&gt;
+
+&lt;div class="left fontone opaco"&gt;
+&lt;ul style="list-style-type: disc"&gt;
+&lt;li&gt;"Primeros pasos en R" por Riva Quiroga, R-Ladies Santiago&lt;/li&gt;
+&lt;br&gt;
+&lt;li&gt;"Taller de introducción a R" por Sonia Mendizábal, R-Ladies CDMX&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div class="left fontone opaco"&gt;
+Puedes encontrarlos en:
+&lt;br&gt;
+.blues[https://github.com/rladies/recursos_en_espanol]
+&lt;/div&gt;
+
+&lt;div class="left fontone opaco"&gt;
+&lt;ul style="list-style-type: disc"&gt;
+&lt;li&gt;"Aprendiendo R para Data Science" por Néstor Montaño, Sociedad Ecuatoriana de Estadística&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+&lt;img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;"&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;div class="left fontone opaco"&gt;
+&lt;center&gt;&lt;font size="20pt"&gt; SEMANA 2: DONE! 
+&lt;br&gt; 
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

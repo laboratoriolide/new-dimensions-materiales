@@ -1,0 +1,1168 @@
+---
+title: "Tidyverse"
+subtitle: "Manipulación de datos"
+author: "Zulemma Bazurto Blacio"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    css: "css/main.css"
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+    seal: false  
+  slidy_presentation: default
+---
+
+layout: true
+
+```{r setup, include=FALSE}
+library(flipbookr)
+```
+
+```{css, eval = TRUE, echo = FALSE}
+.remark-code{line-height: 1.5; font-size: 90%}
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+```
+
+---
+
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+
+#.large[.fontone[.left[.opaco[Tidyverse]]]]
+
+### .center[.large[.fontone[.red[Importación y manipulación de datos]]]]
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+### .right[.opaco[.extralarge[<br>.fontone[Zulemma Bazurto Blacio  <br> New Dimensions | 2023]]]]
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+# .weight[.fontone[.nd[El proceso Tidyverse]]]
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+## .weight[.fontone[.nd[.left[El proceso Tidyverse: Los primeros pasos en análisis de datos]]]]
+
+<br>
+<br>
+
+<img src="fig/tidyverse.png" width="600" />
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+## .weight[.fontone[.nd[.left[El proceso Tidyverse: Los primeros pasos en análisis de datos]]]]
+
+<br>
+<br>
+
+--
+
+<div class="left fontone opaco medium">
+<ul style="list-style-type: disc">
+<li>.nd[Import:] Obtener y entender los datos</li>
+<br>
+<li>.nd[Tidy:] Ordenar los datos de tal manera que sea sencillo transformarlos, sumarizarlo, visualizarlos o realizar un modelo con ellos</li>
+<br>
+<li>.nd[Transform:] Manipular los datos hasta obtener el input que el análisis o técnica estadística necesita</li>
+<br>
+<li>.nd[Visualize:] Realizar el análisis exploratorio de datos</li>
+<br>
+<li>.nd[Model:] Aplicar técnicas estadísticas para el entendimiento del problema o tomar decisiones</li>
+<br>
+<li>.nd[Comunicate:] Mostrar los resultados de tal forma que el resto del mundo los entienda, usando reportes, gráficos, visualizaciones interactivas, integración con herramientas de BI, web apps, etc. </li>
+</ul>
+</div>
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+# .weight[.fontone[.nd[Importando datos]]]
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+## .weight[.fontone[.nd[.left[Importando datos: Importar csv]]]]
+
+<br>
+<br>
+<br>
+
+--
+
+#### .fontone[.opaco[.left[Desde RStudio (R-base o paquete 'readr'):]]]
+
+<div class="left fontone opaco">
+Import Dataset > From Text File > Escoger archivo > Abrir > Escribir nombre a la variable > Import
+</div>
+
+<br>
+<br>
+
+--
+
+#### .fontone[.opaco[.left[Con comando:]]]
+
+<div class="left fontone opaco">
+.blues[read.csv( file, sep = "," , dec = "," , stringsAsFactors= FALSE)]
+</div>
+
+<br>
+<br>
+
+--
+
+#### .fontone[.opaco[.left[Para grandes volúmenes de datos usar paquete 'data.table':]]]
+
+<div class="left fontone opaco">
+.blues[fread()]
+</div>
+
+<br>
+<br>
+
+--
+
+#### .fontone[.opaco[.left[Paquete 'vromm: actualmente ya en tidyverse]]]
+
+<div class="left fontone opaco">
+https://www.tidyverse.org/blog/2019/05/vroom-1-0-0/
+</div>
+<br>
+<div class="left fontone opaco">
+https://vroom.r-lib.org/
+</div>
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+## .weight[.fontone[.nd[.left[Importando datos: Importar desde excel]]]]
+
+<br>
+<br>
+<br>
+
+--
+
+#### .fontone[.opaco[.left[Copiando desde un archivo de excel abierto:]]]
+
+<div class="left fontone opaco">
+.blues[read.table("clipboard", sep="\t", header=TRUE)]
+</div>
+
+<br>
+<br>
+
+--
+
+#### .fontone[.opaco[.left[Desde RStudio:]]]
+
+<div class="left fontone opaco">
+Rstudio > Import Dataset > From Excel > Escoger archivo > Abrir > Escribir nombre a la variable > Import
+</div>
+
+<br>
+<br>
+
+--
+
+#### .fontone[.opaco[.left[Usando el paquete 'openxlsx':]]]
+
+<div class="left fontone opaco">
+.blues[read.xlsx(xlsxFile , sheet , startRow , colNames , skipEmptyRows, rowNames)]
+<br>
+.blues[data_tiempo_espera <- read.xlsx(xlsxFile = 'Data/Data_Banco.xlsx')]
+<br>
+</div>
+
+<br>
+<br>
+
+--
+
+#### .fontone[.opaco[.left[Otros paquetes]]]
+
+<div class="left fontone opaco">
+.blues[excel.link, XLConnect, xlsx, readxl, rio]
+</div>
+
+<br>
+<br>
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+## .weight[.fontone[.nd[.left[Importando datos: Importar desde SPSS, SAS, Stata, etc]]]]
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+--
+
+#### .fontone[.opaco[.left[Desde RStudio:]]]
+
+<div class="left fontone opaco">
+Rstudio > Import Dataset > From SPSS/SAS/STATA
+</div>
+
+<br>
+<br>
+
+--
+
+#### .fontone[.opaco[.left[Usando el paquete 'foreign':]]]
+
+<div class="left fontone opaco">
+SAS: .blues[read.xport()]
+<br>
+SPSS: .blues[read.spss()]
+<br>
+Stata: .blues[read.dta()]
+<br>
+Soporta otros formatos
+<br>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+--
+
+#### .fontone[.opaco[.left[Usango el paquete 'haven':]]]
+
+<div class="left fontone opaco">
+SAS: .blues[read_sas()] y .blues[read_xpt()]
+<br>
+SPSS: .blues[read_sav()] y .blues[read_por()]
+<br>
+Stata: .blues[read_dta()]
+<br>
+Se puede usar el paquerte 'rio'
+<br>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+--
+
+#### .fontone[.opaco[.left[Otros paquetes]]]
+
+<div class="left fontone opaco">
+.blues[excel.link, XLConnect, xlsx, readxl, rio]
+</div>
+
+<br>
+<br>
+<br>
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+# .weight[.fontone[.nd[Ejemplo - .opaco[Data de transacciones bancarias]]]]
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+## .weight[.fontone[.nd[.left[Ejemplo: Data de transacciones bancarias]]]]
+
+<br>
+<br>
+<br>
+
+<div class="left fontone opaco medium">
+El Banco del Pacífico requiere mejorar los tiempos de atención al cliente en ventanilla, para ello ha recolectado esta información anónimamente para cada cajero y transacción realizada.   
+<br>
+<br>
+.weight[Le suministran un excel con dos hojas:]
+<br>
+<br>
+.weight[1.] Tiene los datos de las transacciones, columnas: Sucursal, Cajero, ID_Transaccion, Transaccion, Tiempo_Servicio_seg, Nivel de satisfacción, Monto de la transaccion. 
+<br>
+<br>
+.weight[2.] Otra hoja que indica si en la sucursal se ha puesto o no el nuevo sistema.
+</div>
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+## .weight[.fontone[.nd[.left[Ejemplo: Data de transacciones bancarias]]]]
+
+<br>
+<br>
+
+### .weight[.fontone[.opaco[Revisar archivo de excel: Data_Banco.xlsx]]]
+
+<div class="left fontone opaco medium">
+.weight[1.] Crear un proyecto en RStudio, con las carpetas Data, Exports, etc
+<br>
+<br>
+.weight[2.] Poner en la carpeta 'Data', el excel suministrado
+</div>
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+# .weight[.fontone[.nd[Ejemplo - .opaco[Importar]]]]
+
+---
+
+```{r chunk-24, include=FALSE}
+# Cargar la librería a utilizar
+library(openxlsx)
+
+# Leer el archivo de excel y asignarlo al objeto data_banco
+data_banco <- read.xlsx(xlsxFile="data/Data_Banco.xlsx", sheet = "Data")
+data_sucursal <- read.xlsx(xlsxFile = "data/Data_Banco.xlsx", sheet = "Data_Sucursal")
+```
+
+`r chunk_reveal("chunk-24",display_type = c("code"))`
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+
+## .weight[.fontone[.nd[.left[Explorando la data]]]]
+
+<br>
+<br>
+
+### .weight[.fontone[.opaco[.left[¿Qué  tipo de estructura hemos importado?]]]]
+
+<br>
+<br>
+<br>
+
+```{r chunk-25}
+str(data_banco)
+```
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+## .weight[.fontone[.nd[.left[Entender los datos]]]]
+
+<br>
+<br>
+<br>
+
+--
+
+<div class="left fontone opaco">
+.weight[Luego de importar se debe entender los datos]
+</div>
+<div class="left fontone opaco">
+<ul style="list-style-type: disc">
+<li>¿Qué representa cada columna?</li>
+<br>
+<li>¿Qué tipo de dato debería tener cada columna?</li>
+<br>
+<li>¿Qué granularidad o atomicidad tiene la data?</li>
+<br>
+<li>Si es que se tiene varios conjuntos de datos, ¿Cómo se relacionan los datos?</li>
+<br>
+<li>A qué periodo de tiempo corresponde la data</li>
+<br>
+<li>Muchas veces se obtiene la información desde una base de datos y por tanto toca entender la base y el query que genera los datos</li>
+</ul>
+</div>
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+# .weight[.fontone[.nd[Ejemplo - .opaco[Entender los datos]]]]
+
+---
+
+```{r chunk-26, eval=FALSE, include=FALSE}
+# Podríamos ver las primeras 5 filas
+head(data_sucursal, n = 5)
+
+# Listar los nombres de las columnas 
+names(data_banco)
+names(data_sucursal)
+```
+
+`r chunk_reveal("chunk-26",display_type = c("code"))`
+
+---
+
+```{r chunk-27}
+# Podríamos ver las primeras 5 filas
+head(data_sucursal, n = 5)
+
+# Listar los nombres de las columnas 
+names(data_banco)
+names(data_sucursal)
+```
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+## .weight[.fontone[.nd[.left[Manipulación de datos: Básico]]]]
+
+<br>
+<br>
+<br>
+
+<div class="left fontone opaco medium">
+R tiene sus comandos predeterminados para manipular datos, esto se conoce como 'R Base', sin embargo existen varios paquetes que simplifican esta tarea, en este curso veremos como hacerlo con el paquete .blues[dplyr] (y .blues[magrittr]) que están dentro del conjunto de paquetes llamado .blues[tidyverse]
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+```{r chunk-28}
+# Cargar la librería
+library(tidyverse)
+```
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+## .weight[.fontone[.nd[.left[Manipulación de datos: Básico]]]]
+
+<br>
+<br>
+<br>
+
+
+<div class="left fontone opaco">
+.weight[Tibbles (un dataframe mejorado):]
+<br>
+Tibble es un objeto del paquete dplyr, entre las mejoras que da es que no imprime todo el objeto en pantalla, sino un resumen del mismo. (más información tipeando ?tibble)
+</div>
+
+<br>
+<br>
+<br>
+
+
+```{r chunk-29}
+# Convertir el data_banco a un tibble
+data_banco <- tibble::as_tibble(data_banco) 
+# Muestra data_banco
+head(data_banco, n = 5)
+```
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+## .weight[.fontone[.nd[.left[Operador Pipe: %>%]]]]
+
+<br>
+<br>
+<br>
+
+<div class="left fontone opaco medium">
+El operador Pipe .blues[%>%] del paquete .blues[magrittr] permiten que el código sea más legible porque:
+</div>
+
+--
+
+<div class="left fontone opaco medium">
+<ul style="list-style-type: disc">
+<li>Permite secuencias estructurantes de operaciones de datos de izquierda a derecha (a diferencia de dentro y fuera)</li>
+<br>
+<li>Evitando llamadas a funciones anidadas</li>
+<br>
+<li>Minimiza la necesidad de variables locales y definiciones de funciones</li>
+<br>
+<li>Facilita agregar pasos en cualquier lugar de la programación</li>
+</ul>
+</div>
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+## .weight[.fontone[.nd[.left[Operador Pipe: %>%]]]]
+
+<br>
+<br>
+<br>
+
+
+```{r chunk-30, message=FALSE, warning=FALSE}
+library(magrittr)
+data_banco %>% names
+data_banco %>% dim
+data_banco %>% names %>% length 
+```
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+## .weight[.fontone[.nd[.left[Operador Pipe: %>%]]]]
+
+<br>
+<br>
+<br>
+
+<div class="left fontone opaco medium">
+Con la última línea de código le estamos diciendo a R que:
+</div>
+
+--
+
+<div class="left fontone opaco medium">
+<ul style="list-style-type: disc">
+<li>tome el objeto data_banco</li>
+<br>
+<li>luego (%>%)</li>
+<br>
+<li>que entregue los nombres de las variables del objeto</li>
+<br>
+<li>luego (%>%)</li>
+<br>
+<li>que entregue la longitud (length) del objeto</li>
+</ul>
+</div>
+
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+## .weight[.fontone[.nd[.left[Comparación de sintaxis]]]]
+
+<br>
+<br>
+<br>
+
+<div class="left fontone opaco medium">
+Ambas dan el mismo resultado pero una es menos intuitiva que otra, .weight[¿cuál?]
+</div>
+
+<br>
+<br>
+<br>
+
+```{r chunk-31, message=FALSE, warning=FALSE}
+library(magrittr)
+data_banco %>% names %>% length 
+```
+
+```{r chunk-32, message=FALSE, warning=FALSE}
+#sintaxis R base
+length(names(data_banco)) # equivalencia del código anterior
+```
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+# .weight[.fontone[.nd[Los verbos del Tidyverse]]]
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+## .weight[.fontone[.nd[.left[Filtrar filas: filter()]]]]
+
+<br>
+<br>
+<br>
+
+<div class="left fontone opaco medium">
+Filtrar las filas según las condiciones dadas en .blues[filter()]
+</div>
+
+<br>
+
+```{r chunk-39, eval=FALSE}
+# Filtrar las filas correspondientes a la sucursal 62
+data_banco %>% filter( Sucursal== 62 ) %>% View
+# Filtrar las filas correspondientes a la sucursal 62 y hayan durado más de 120 segundos
+data_banco %>% filter( Sucursal== 62 & Tiempo_Servicio_seg > 120 ) %>% View
+# Filtrar las filas correspondientes a la sucursal 62,  hayan durado 
+# más de 120 segundos y la evaluación a la satisfacción sea Bueno
+data_banco %>% filter( Sucursal== 62 & Tiempo_Servicio_seg > 120 & Satisfaccion== "Muy Bueno" ) %>% View
+```
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+## .weight[.fontone[.nd[.left[Filtrar filas y seleccionar]]]]
+
+<br>
+<br>
+<br>
+
+
+```{r chunk-40}
+# Con el data banco
+# Filtrar las filas correspondientes a la sucursal 85
+# calcular la correlacion entre Tiempo_Servicio_seg y Monto
+data_banco %>% # Operador pipe total
+  filter( Sucursal== 85 ) %$%  # Operador pipe para seleccion de columnas
+  cor(Tiempo_Servicio_seg, as.numeric(Monto))
+```
+
+
+---
+## .weight[.fontone[.nd[.left[Seleccionar columnas: select()]]]]
+
+<br>
+<br>
+<br>
+
+<div class="left fontone opaco">
+Seleccionar las columnas Transaccion, Tiempo_Servicio_seg del data frame 'data_banco' pero usando .blues[%>%], lo que permite programar como si se escribiese "del data_banco, selecciona las columnas Transaccion y Tiempo_Servicio_seg"
+</div>
+
+<br>
+<br>
+<br>
+
+```{r chunk-33}
+# Note que como no se asignó, R evalúa la expresión y presenta el resultado
+# data_banco[ , c("Transaccion", "Tiempo_Servicio_seg") ] ## Base de R
+data_banco %>% select(Transaccion, Tiempo_Servicio_seg) %>% head
+```
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="left fontone opaco">
+<center><font size="15pt"> .nd[Seleccionar columnas y aplicar una función]
+<br> 
+En la siguiente slide, seleccionaremos la columna Tiempo_Servicio_seg y obtendremos un boxplot.</font>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+---
+
+```{r chunk-34, eval=FALSE, include=FALSE}
+data_banco %>% 
+  select(Tiempo_Servicio_seg) %>% 
+  boxplot
+```
+
+`r chunk_reveal("chunk-34")`
+
+---
+
+```{r chunk-35}
+# boxplot(data_banco$Tiempo_Servicio_seg) ## Base de R
+data_banco %>% 
+  select(Tiempo_Servicio_seg) %>% 
+  boxplot
+```
+
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+## .weight[.fontone[.nd[.left[Seleccionar columnas: select()]]]]
+
+<br>
+<br>
+<br>
+
+<div class="left fontone opaco medium">
+Seleccionar y ver en el visor de datos de RStudio
+</div>
+
+<br>
+
+```{r chunk-36, eval=FALSE}
+# Seleccionar y ver en el visor de datos de RStudio
+data_banco %>% select(Transaccion, Tiempo_Servicio_seg) %>% View
+```
+
+--
+
+<br>
+
+<div class="left fontone opaco medium">
+Seleccionar todas las columnas menos Cajero
+</div>
+
+<br>
+
+```{r chunk-37, eval=FALSE}
+# Seleccionar todas las columnas menos Cajero
+data_banco %>% select(-Cajero) %>% View
+```
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+## .weight[.fontone[.nd[.left[select() y sus funciones auxiliares]]]]
+
+<br>
+<br>
+<br>
+
+<div class="left fontone opaco medium">
+Seleccionar según nombre de la columna/variable
+</div>
+
+<br>
+
+```{r chunk-38, eval=FALSE}
+# Seleccionar todas las columnas cuyo nombre contenga el texto "Tra"
+data_banco %>% select( contains("Tra")) %>% View
+# Seleccionar todas las columnas cuyo nombre inicie con "S"
+data_banco %>% select( starts_with("S")) %>% View
+# Seleccionar todas las columnas cuyo nombre finalice con "on"
+data_banco %>% select( ends_with("on")) %>% View
+# Seleccionar todas las columnas cuyo nombre contenga una "r" o un "sa"
+data_banco %>% select( matches("r?sa")) %>% View
+# Más información sobre expresiones regulares usando: ?base::regex
+```
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+## .weight[.fontone[.nd[.left[Ordenar las filas: arrange()]]]]
+
+<br>
+<br>
+<br>
+
+<div class="left fontone opaco medium">
+Ordenar las filas según lo expresado en .blues[arrange()]
+</div>
+
+<br>
+
+```{r chunk-41, eval=FALSE}
+# Ordenar por la satisfaccion
+data_banco %>% arrange( Satisfaccion ) %>% View
+# Ordenar cada Transaccion y dentro de cada transaccion de mayor a menor por tiempo de servicio
+data_banco %>% arrange( Transaccion, desc(Tiempo_Servicio_seg) ) %>% View
+
+```
+
+--
+
+<div class="left fontone opaco">
+Por defecto, .blues[arrange()] organiza los datos de menor a mayor.
+</div>
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+## .weight[.fontone[.nd[.left[Crear o modificar columnas/variables: mutate()]]]]
+
+<br>
+<br>
+<br>
+
+<div class="left fontone opaco medium">
+Crear una nueva columna con el tiempo en minutos. Nótese que .nd[no se asignó], el objeto data_banco no tiene la columna Tiempo_Servicio_Min
+</div>
+
+<br>
+<br>
+
+--
+
+```{r chunk-42}
+# Crear una nueva columna con el tiempo en minutos
+data_banco %>% mutate(Tiempo_Servicio_Min= Tiempo_Servicio_seg/60) %>% head
+```
+
+<br>
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+## .weight[.fontone[.nd[.left[Crear o modificar columnas/variables: mutate()]]]]
+
+<br>
+<br>
+<br>
+
+```{r chunk-43}
+# Crear una nueva columna en data_banco con el tiempo en minutos
+data_banco <- data_banco %>%
+  mutate(Tiempo_Servicio_Min= Tiempo_Servicio_seg/60)
+# Mostrar primeras 6 filas
+head(data_banco)
+```
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+## .weight[.fontone[.nd[.left[Nuevas columnas: transmute()]]]]
+
+<br>
+<br>
+<br>
+
+<div class="left fontone opaco medium">
+Para conservar solamente las nuevas columnas se usa  .blues[transmute()]
+</div>
+
+<br>
+
+```{r chunk-44}
+# Crear una nueva columna con el tiempo en minutos
+data_banco %>%
+  transmute(Tiempo_Servicio_Min= Tiempo_Servicio_seg/60) %>%
+  head
+```
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+## .weight[.fontone[.nd[.left[Crear resúmenes: summarise()]]]]
+
+<br>
+<br>
+<br>
+
+<div class="left fontone opaco medium">
+.blues[summarise()] permite aplicar funciones a nuestro data.frame, en R-base se usa .blues[tapply()], otra opcion es .blues[ddply()] del paquete 'plyr'.
+</div>
+
+--
+
+<br>
+<br>
+<br>
+
+```{r chunk-45}
+# Obtener la media del tiempo de servicio
+data_banco %>% 
+  summarise( 
+    MEDIA= mean(Tiempo_Servicio_seg, na.rm=TRUE), 
+    MEDIA_ACOT= mean(Tiempo_Servicio_seg, na.rm = TRUE, trim = 0.05),
+		CANTIDAD= n()
+  )
+```
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+## .weight[.fontone[.nd[.left[Crear resúmenes para datos agrupados]]]]
+
+<br>
+<br>
+<br>
+
+<div class="left fontone opaco medium">
+Obtener medidas de tendencia central para el tiempo de servicio para cada Transacción
+</div>
+
+--
+
+<br>
+
+```{r chunk-46, message=FALSE, warning=FALSE}
+# Obtener medidas de tendencia central para el tiempo de servicio para cada tipo de transaccion
+data_banco %>% 
+  group_by(Transaccion) %>%
+  summarise_at( vars(Tiempo_Servicio_seg), 
+                funs (
+                  MEDIA= mean(., na.rm=TRUE), 
+                  MEDIA_ACOT= mean(., na.rm = TRUE, trim = 0.05),
+                  CANTIDAD= n()))
+```
+
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+<img style="float:left" src="https://raw.githubusercontent.com/rladies/branding-materials/main/logo/R-LadiesGlobal_RBG_online_LogoWithText_Horizontal.png" width="300"/>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="left fontone opaco">
+Este material ha sido elaborado a partir de los recursos en español de R-Ladies:
+</div>
+
+<div class="left fontone opaco">
+<ul style="list-style-type: disc">
+<li>"Primeros pasos en R" por Riva Quiroga, R-Ladies Santiago</li>
+<br>
+<li>"Taller de introducción a R" por Sonia Mendizábal, R-Ladies CDMX</li>
+</ul>
+</div>
+
+<div class="left fontone opaco">
+Puedes encontrarlos en:
+<br>
+.blues[https://github.com/rladies/recursos_en_espanol]
+</div>
+
+<div class="left fontone opaco">
+<ul style="list-style-type: disc">
+<li>"Aprendiendo R para Data Science" por Néstor Montaño, Sociedad Ecuatoriana de Estadística</li>
+</ul>
+</div>
+
+---
+background-image: url("fig/Fondo - 2023.PNG")
+background-size: cover
+class: center, center, top
+
+<img src="fig/LIDE - Logo 1-12.png" style="position: absolute; top: 0; right: 0; width: 150px;">
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="left fontone opaco">
+<center><font size="20pt"> SEMANA 2: DONE! 
+<br> 
+
+
+
