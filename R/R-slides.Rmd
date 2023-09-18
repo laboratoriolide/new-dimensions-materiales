@@ -1,0 +1,14 @@
+---
+title: "R slides"
+output:
+  html_document:
+    df_print: paged
+---
+
+[Semana 1](https://laboratoriolide.github.io/Semana%201/Semana_1_BasicosR.html#1)
+
+[Semana 2](https://laboratoriolide.github.io/Semana%202/Semana-2_Tidyverse.html#1)
+
+[Semana 3](https://laboratoriolide.github.io/Semana_3/Semana_3Union_de_datos_tidyr.html#1)
+
+[Semana 4](https://laboratoriolide.github.io/Semana_4/Semana_4_Ggplot.html#1)
